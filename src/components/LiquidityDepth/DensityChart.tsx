@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactChild, ReactNode } from 'react'
 import { VictoryBar, VictoryLine, VictoryBrushContainer, VictoryAxis, VictoryChart, VictoryLabel } from 'victory'
 import useTheme from 'hooks/useTheme'
 import { Currency, Price, Token } from '@uniswap/sdk-core'
@@ -37,6 +37,13 @@ const SyncingIndicator = styled.div`
   bottom: 0;
   right: 0;
 `
+
+const Message = ({ icon, children }: { icon: ReactNode; children: ReactChild }) => (
+  <ColumnCenter>
+    {icon}
+    <TYPE.darkGray padding={10}>{children}</TYPE.darkGray>
+  </ColumnCenter>
+)
 
 export default function DensityChart({
   price,
@@ -90,12 +97,9 @@ export default function DensityChart({
       ) : null}
 
       {formattedData && formattedData?.length === 0 ? (
-        <ColumnCenter>
-          <XCircle stroke={theme.text4} />
-          <TYPE.darkGray padding={10}>
-            <Trans>No data</Trans>
-          </TYPE.darkGray>
-        </ColumnCenter>
+        <Message icon={<XCircle stroke={theme.text4} />}>
+          <Trans>No data</Trans>
+        </Message>
       ) : (
         <VictoryChart
           animate={{ duration: 500, easing: 'cubic' }}
@@ -127,8 +131,8 @@ export default function DensityChart({
                 const leftRangeValue = Number(domain.x[0])
                 const rightRangeValue = Number(domain.x[1])
 
-                leftRangeValue > 0 && onLeftRangeInput(leftRangeValue.toFixed(2))
-                rightRangeValue > 0 && onRightRangeInput(rightRangeValue.toFixed(2))
+                leftRangeValue > 0 && onLeftRangeInput(leftRangeValue.toFixed(8))
+                rightRangeValue > 0 && onRightRangeInput(rightRangeValue.toFixed(8))
               }}
             />
           }
