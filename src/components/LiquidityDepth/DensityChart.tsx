@@ -47,6 +47,7 @@ export default function DensityChart({
   priceUpper,
   onLeftRangeInput,
   onRightRangeInput,
+  interactive,
 }: {
   price: string | undefined
   currencyA: Currency | undefined
@@ -56,6 +57,7 @@ export default function DensityChart({
   priceUpper?: Price<Token, Token>
   onLeftRangeInput: (typedValue: string) => void
   onRightRangeInput: (typedValue: string) => void
+  interactive: boolean
 }) {
   const theme = useTheme()
 
@@ -81,7 +83,7 @@ export default function DensityChart({
     )
   }
 
-  const interactive = Boolean(formattedData?.length)
+  interactive = interactive && Boolean(formattedData?.length)
 
   return (
     <Wrapper>
@@ -131,8 +133,8 @@ export default function DensityChart({
                 const rightRangeValue = Number(domain.x[1])
 
                 // simulate user input for auto-formatting and other validations
-                leftRangeValue > 0 && onLeftRangeInput(leftRangeValue.toFixed(8))
-                rightRangeValue > 0 && onRightRangeInput(rightRangeValue.toFixed(8))
+                leftRangeValue > 0 && onLeftRangeInput(leftRangeValue.toFixed(6))
+                rightRangeValue > 0 && onRightRangeInput(rightRangeValue.toFixed(6))
               }}
             />
           }
