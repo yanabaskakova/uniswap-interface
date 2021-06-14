@@ -38,13 +38,6 @@ const SyncingIndicator = styled.div`
   right: 0;
 `
 
-const Message = ({ icon, children }: { icon: ReactNode; children: ReactChild }) => (
-  <ColumnCenter>
-    {icon}
-    <TYPE.darkGray padding={10}>{children}</TYPE.darkGray>
-  </ColumnCenter>
-)
-
 export default function DensityChart({
   price,
   currencyA,
@@ -88,6 +81,8 @@ export default function DensityChart({
     )
   }
 
+  const interactive = Boolean(formattedData?.length)
+
   return (
     <Wrapper>
       {syncing ? (
@@ -96,10 +91,14 @@ export default function DensityChart({
         </SyncingIndicator>
       ) : null}
 
-      {formattedData && formattedData?.length === 0 ? (
-        <Message icon={<XCircle stroke={theme.text4} />}>
-          <Trans>No data</Trans>
-        </Message>
+      {/* formatted === undefined will show sample data */}
+      {formattedData === [] ? (
+        <ColumnCenter>
+          <XCircle stroke={theme.text4} />
+          <TYPE.darkGray padding={10}>
+            <Trans>No data</Trans>
+          </TYPE.darkGray>
+        </ColumnCenter>
       ) : (
         <VictoryChart
           animate={{ duration: 500, easing: 'cubic' }}
@@ -109,10 +108,10 @@ export default function DensityChart({
           containerComponent={
             <VictoryBrushContainer
               allowDraw={false}
-              allowDrag={Boolean(formattedData?.length)}
-              allowResize={Boolean(formattedData?.length)}
+              allowDrag={interactive}
+              allowResize={interactive}
               brushDimension="x"
-              handleWidth={40}
+              handleWidth={40 /* handle width must be as large as handle head */}
               brushDomain={
                 leftPrice && rightPrice
                   ? {
@@ -124,13 +123,14 @@ export default function DensityChart({
                 <Brush
                   leftHandleColor={currencyA ? tokenAColor : theme.primary1}
                   rightHandleColor={currencyB ? tokenBColor : theme.secondary1}
-                  allowDrag={Boolean(formattedData?.length)}
+                  allowDrag={interactive}
                 />
               }
               onBrushDomainChangeEnd={(domain) => {
                 const leftRangeValue = Number(domain.x[0])
                 const rightRangeValue = Number(domain.x[1])
 
+                // simulate user input for auto-formatting and other validations
                 leftRangeValue > 0 && onLeftRangeInput(leftRangeValue.toFixed(8))
                 rightRangeValue > 0 && onRightRangeInput(rightRangeValue.toFixed(8))
               }}
@@ -139,15 +139,15 @@ export default function DensityChart({
         >
           <VictoryBar
             data={formattedData ? formattedData : sampleData}
-            style={{ data: { stroke: theme.blue1, fill: theme.blue1, opacity: '0.2' } }}
+            style={{ data: { stroke: theme.blue1, fill: theme.blue1, opacity: '0.5' } }}
             x={'price0'}
             y={'activeLiquidity'}
           />
 
-          {/* Plot at `priceAtActiveTick` to put on same axis as VictoryBar, but display `price` as label */}
           {price && (
             <VictoryLine
               data={
+                /* plot at `priceAtActiveTick` to put on same axis as VictoryBar, but display `price` as label */
                 maxLiquidity && priceAtActiveTick
                   ? [
                       { x: priceAtActiveTick, y: 0 },
@@ -159,7 +159,7 @@ export default function DensityChart({
               labelComponent={
                 <VictoryLabel
                   renderInPortal
-                  dy={-20}
+                  dy={-10}
                   style={{ fill: theme.primaryText1, fontWeight: 500, fontSize: 15 }}
                 />
               }
