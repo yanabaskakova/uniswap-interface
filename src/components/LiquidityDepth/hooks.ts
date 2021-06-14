@@ -31,7 +31,7 @@ export function useDensityChartData({
   // clear data when inputs are cleared
   useEffect(() => {
     if (!currencyA || !currencyB || !feeAmount) {
-      setFormattedData([])
+      setFormattedData(undefined)
     }
   }, [currencyA, currencyB, feeAmount, setFormattedData])
 
