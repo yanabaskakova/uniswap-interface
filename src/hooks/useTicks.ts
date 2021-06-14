@@ -88,8 +88,8 @@ export function useTicks(
             ...(current?.map((tickData: TickData) => {
               return {
                 tick: tickData.tick,
-                liquidityNet: tickData.liquidityNet,
-                liquidityGross: tickData.liquidityGross,
+                liquidityNet: tickData.liquidityNet.toString(),
+                liquidityGross: tickData.liquidityGross.toString(),
               }
             }) ?? []),
           ],

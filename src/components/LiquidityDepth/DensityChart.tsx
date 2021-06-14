@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { VictoryBar, VictoryLine, VictoryBrushContainer, VictoryAxis, VictoryChart, VictoryLabel } from 'victory'
 import useTheme from 'hooks/useTheme'
 import { Currency, Price, Token } from '@uniswap/sdk-core'
@@ -101,6 +101,7 @@ export default function DensityChart({
           animate={{ duration: 500, easing: 'cubic' }}
           height={275}
           padding={40}
+          minDomain={{ y: 0 }}
           containerComponent={
             <VictoryBrushContainer
               allowDraw={false}
