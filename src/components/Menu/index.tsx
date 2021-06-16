@@ -1,16 +1,16 @@
 import React, { useRef } from 'react'
-import { BookOpen, Code, Info, MessageCircle, PieChart } from 'react-feather'
+import { BookOpen, Code, Info } from 'react-feather'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
-import { useActiveWeb3React } from '../../hooks/web3'
+// import { useActiveWeb3React } from '../../hooks/web3'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { Trans } from '@lingui/macro'
 
 import { ExternalLink } from '../../theme'
-import { ButtonPrimary } from '../Button'
+// import { ButtonPrimary } from '../Button'
 
 export enum FlyoutAlignment {
   LEFT = 'LEFT',
@@ -48,11 +48,11 @@ const StyledMenuButton = styled.button`
   }
 `
 
-const UNIbutton = styled(ButtonPrimary)`
-  background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
-  border: none;
-`
+// const UNIbutton = styled(ButtonPrimary)`
+//   background-color: ${({ theme }) => theme.bg3};
+//   background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+//   border: none;
+// `
 
 const StyledMenu = styled.div`
   margin-left: 0.5rem;
@@ -121,16 +121,16 @@ const InternalMenuItem = styled(Link)`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
+const CODE_LINK = '#'
 
 export default function Menu() {
-  const { account } = useActiveWeb3React()
+  // const { account } = useActiveWeb3React()
 
   const node = useRef<HTMLDivElement>()
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
-  const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
+  // const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
 
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
@@ -141,13 +141,13 @@ export default function Menu() {
 
       {open && (
         <MenuFlyout>
-          <MenuItem href="https://uniswap.org/">
+          <MenuItem href="#">
             <Info size={14} />
             <div>
               <Trans>About</Trans>
             </div>
           </MenuItem>
-          <MenuItem href="https://docs.uniswap.org/">
+          <MenuItem href="https://rara-official.gitbook.io/rara/">
             <BookOpen size={14} />
             <div>
               <Trans>Docs</Trans>
@@ -159,13 +159,13 @@ export default function Menu() {
               <Trans>Code</Trans>
             </div>
           </MenuItem>
-          <MenuItem href="https://discord.gg/FCfyBSbCU5">
+          {/* <MenuItem href="https://discord.gg/FCfyBSbCU5">
             <MessageCircle size={14} />
             <div>
               <Trans>Discord</Trans>
             </div>
-          </MenuItem>
-          <MenuItem href="https://info.uniswap.org/">
+          </MenuItem> */}
+          {/* <MenuItem href="https://info.uniswap.org/" disabled>
             <PieChart size={14} />
             <div>
               <Trans>Analytics</Trans>
@@ -175,7 +175,7 @@ export default function Menu() {
             <UNIbutton onClick={openClaimModal} padding="8px 16px" width="100%" borderRadius="12px" mt="0.5rem">
               <Trans>Claim UNI</Trans>
             </UNIbutton>
-          )}
+          )} */}
         </MenuFlyout>
       )}
     </StyledMenu>

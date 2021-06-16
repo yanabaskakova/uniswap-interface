@@ -13,6 +13,7 @@ export const FRAX = new Token(1, '0x853d955aCEf822Db058eb8505911ED77F175b99e', 1
 export const FXS = new Token(1, '0x3432B6A60D23Ca0dFCa7761B7ab56459D9C964D0', 18, 'FXS', 'Frax Share')
 export const renBTC = new Token(1, '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D', 8, 'renBTC', 'renBTC')
 export const UMA = new Token(1, '0x04Fa0d235C4abf4BcF4787aF4CF447DE572eF828', 18, 'UMA', 'UMA Voting Token v1')
+// export const VIDYX = new Token(1, 'TJBhS32MKMH6eQi9sfsiQjmCHi7bPbygTy', 6, 'VIDYX', 'VidyX')
 export const ETH2X_FLI = new Token(
   1,
   '0xAa6E8127831c9DE45ae56bB1b0d4D4Da6e5665BD',
