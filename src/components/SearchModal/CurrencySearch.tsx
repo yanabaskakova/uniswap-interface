@@ -77,6 +77,8 @@ export function CurrencySearch({
 
   const allTokens = useAllTokens()
 
+  console.log('allTokens', allTokens)
+
   // if they input an address, use it
   const isAddressSearch = isAddress(debouncedQuery)
 
@@ -97,14 +99,21 @@ export function CurrencySearch({
   const tokenComparator = useTokenComparator(invertSearchOrder)
 
   const filteredTokens: Token[] = useMemo(() => {
+    console.log('IN filteredTokens')
     return filterTokens(Object.values(allTokens), debouncedQuery)
   }, [allTokens, debouncedQuery])
+
+  console.log('filteredTokens', filteredTokens)
 
   const sortedTokens: Token[] = useMemo(() => {
     return filteredTokens.sort(tokenComparator)
   }, [filteredTokens, tokenComparator])
 
+  console.log('sortedTokens', sortedTokens)
+
   const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
+
+  console.log('filteredSortedTokens', filteredSortedTokens)
 
   const ether = useMemo(() => chainId && ExtendedEther.onChain(chainId), [chainId])
 
@@ -166,6 +175,8 @@ export function CurrencySearch({
   const filteredInactiveTokens = useSearchInactiveTokenLists(
     filteredTokens.length === 0 || (debouncedQuery.length > 2 && !isAddressSearch) ? debouncedQuery : undefined
   )
+
+  console.log('filteredSortedTokensWithETH', filteredSortedTokensWithETH)
 
   return (
     <ContentWrapper>

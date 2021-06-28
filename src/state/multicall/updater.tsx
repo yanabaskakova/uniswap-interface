@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef } from 'react'
-import { Multicall2 } from '../../abis/types'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { useMulticall2Contract } from '../../hooks/useContract'
 import useDebounce from '../../hooks/useDebounce'
@@ -43,21 +42,21 @@ async function fetchChunk(
   //   )
   //   resultsBlockNumber = blockNumber.toNumber()
   //   results = returnData
-  let resultsBlockNumber
-  let results
+  console.log('multicall2Contract', multicall2Contract)
+  let resultsBlockNumber, returnData
   try {
-    ;[resultsBlockNumber, results] = await multicall2Contract.aggregate(chunk.map((obj) => [obj.address, obj.callData]))
-    // ;[resultsBlockNumber, results] = await multicall2Contract.aggregate(chunk.map((obj) => [obj.address, obj.callData]))
+    ;[resultsBlockNumber, returnData] = await multicall2Contract.aggregate(
+      chunk.map((obj) => [obj.address, obj.callData])
+    )
   } catch (error) {
-    console.debug('Failed to fetch chunk', error)
+    console.debug('Failed to fetch chunk inside retry', error)
     throw error
   }
-  if (resultsBlockNumber < minBlockNumber) {
-    const retryMessage = `Fetched results for old block number: ${resultsBlockNumber.toString()} vs. ${minBlockNumber}`
-    console.debug(retryMessage)
-    throw new RetryableError(retryMessage)
+  if (resultsBlockNumber.toNumber() < minBlockNumber) {
+    console.debug(`Fetched results for old block number: ${resultsBlockNumber.toString()} vs. ${minBlockNumber}`)
+    throw new RetryableError('Fetched for old block number')
   }
-  return { results, blockNumber: resultsBlockNumber }
+  return { results: returnData, blockNumber: resultsBlockNumber.toNumber() }
 }
 
 /**

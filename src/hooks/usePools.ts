@@ -49,6 +49,7 @@ export function usePools(
         fee: value[2],
       })
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chainId, transformed])
 
   const slot0s = useMultipleContractSingleData(poolAddresses, POOL_STATE_INTERFACE, 'slot0')

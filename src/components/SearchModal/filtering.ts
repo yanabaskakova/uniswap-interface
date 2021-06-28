@@ -37,6 +37,7 @@ export function createTokenFilterFunction<T extends Token | TokenInfo>(search: s
 }
 
 export function filterTokens<T extends Token | TokenInfo>(tokens: T[], search: string): T[] {
+  console.log('tokens!!', tokens)
   return tokens.filter(createTokenFilterFunction(search))
 }
 

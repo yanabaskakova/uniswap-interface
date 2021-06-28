@@ -1,7 +1,7 @@
 // a list of tokens by chain
 import { Currency, Token } from '@uniswap/sdk-core'
 import { SupportedChainId } from './chains'
-import { USDT, VIDYX } from './tokens'
+import { USDT } from './tokens'
 
 export const WETH = {
   // [ChainId.MAINNET]: new Token(

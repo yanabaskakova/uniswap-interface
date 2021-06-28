@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { ButtonGray, ButtonOutlined, ButtonPrimary } from 'components/Button'
 import { AutoColumn } from 'components/Column'
 import { FlyoutAlignment, NewMenu } from 'components/Menu'
@@ -7,11 +7,11 @@ import PositionList from 'components/PositionList'
 import { RowBetween, RowFixed } from 'components/Row'
 import { useActiveWeb3React } from 'hooks/web3'
 import { useV3Positions } from 'hooks/useV3Positions'
-import { BookOpen, ChevronDown, Download, Inbox, PlusCircle, ChevronsRight, Layers } from 'react-feather'
+import { BookOpen, ChevronDown, Download, PlusCircle, ChevronsRight, Layers } from 'react-feather'
 import { Trans } from '@lingui/macro'
 import { Link } from 'react-router-dom'
 import { useWalletModalToggle } from 'state/application/hooks'
-import styled, { ThemeContext } from 'styled-components'
+import styled from 'styled-components'
 import { HideSmall, TYPE } from 'theme'
 import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
 import { LoadingRows } from './styleds'
@@ -110,7 +110,6 @@ export default function Pool() {
   const { account } = useActiveWeb3React()
   const toggleWalletModal = useWalletModalToggle()
 
-  const theme = useContext(ThemeContext)
   const [userHideClosedPositions, setUserHideClosedPositions] = useUserHideClosedPositions()
 
   const { positions, loading: positionsLoading } = useV3Positions(account)
