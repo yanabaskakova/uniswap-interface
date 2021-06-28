@@ -9,8 +9,7 @@ import { ExternalLink, TYPE, HideSmall } from '../../theme'
 import { Text } from 'rebass'
 import Card from '../../components/Card'
 import { RowBetween, RowFixed } from '../../components/Row'
-import { ButtonPrimary, ButtonSecondary, ButtonOutlined } from '../../components/Button'
-import { ChevronsRight } from 'react-feather'
+import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
 
 import { AutoColumn } from '../../components/Column'
 
@@ -18,7 +17,6 @@ import { useActiveWeb3React } from '../../hooks/web3'
 import { useV2Pairs } from '../../hooks/useV2Pairs'
 import { toV2LiquidityToken, useTrackedTokenPairs } from '../../state/user/hooks'
 import { Dots } from '../../components/swap/styleds'
-import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import { useStakingInfo } from '../../state/stake/hooks'
 import { BIG_INT_ZERO } from '../../constants/misc'
 import { Pair } from '@uniswap/v2-sdk'
@@ -29,10 +27,10 @@ const PageWrapper = styled(AutoColumn)`
   width: 100%;
 `
 
-const VoteCard = styled(DataCard)`
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #27ae60 0%, #000000 100%);
-  overflow: hidden;
-`
+// const VoteCard = styled(DataCard)`
+//   background: radial-gradient(76.02% 75.41% at 1.84% 0%, #27ae60 0%, #000000 100%);
+//   overflow: hidden;
+// `
 
 const TitleRow = styled(RowBetween)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -59,12 +57,12 @@ const ResponsiveButtonPrimary = styled(ButtonPrimary)`
   `};
 `
 
-const ResponsiveButtonSecondary = styled(ButtonSecondary)`
-  width: fit-content;
-  ${({ theme }) => theme.mediaWidth.upToSmall`
-    width: 48%;
-  `};
-`
+// const ResponsiveButtonSecondary = styled(ButtonSecondary)`
+//   width: fit-content;
+//   ${({ theme }) => theme.mediaWidth.upToSmall`
+//     width: 48%;
+//   `};
+// `
 
 const EmptyProposals = styled.div`
   border: 1px solid ${({ theme }) => theme.text4};
@@ -130,38 +128,6 @@ export default function Pool() {
     <>
       <PageWrapper>
         <SwapPoolTabs active={'pool'} />
-        <VoteCard>
-          <CardBGImage />
-          <CardNoise />
-          <CardSection>
-            <AutoColumn gap="md">
-              <RowBetween>
-                <TYPE.white fontWeight={600}>
-                  <Trans>Liquidity provider rewards</Trans>
-                </TYPE.white>
-              </RowBetween>
-              <RowBetween>
-                <TYPE.white fontSize={14}>
-                  <Trans>
-                    Liquidity providers earn a 0.3% fee on all trades proportional to their share of the pool. Fees are
-                    added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.
-                  </Trans>
-                </TYPE.white>
-              </RowBetween>
-              <ExternalLink
-                style={{ color: 'white', textDecoration: 'underline' }}
-                target="_blank"
-                href="https://uniswap.org/docs/v2/core-concepts/pools/"
-              >
-                <TYPE.white fontSize={14}>
-                  <Trans>Read more about providing liquidity</Trans>
-                </TYPE.white>
-              </ExternalLink>
-            </AutoColumn>
-          </CardSection>
-          <CardBGImage />
-          <CardNoise />
-        </VoteCard>
 
         <AutoColumn gap="lg" justify="center">
           <AutoColumn gap="md" style={{ width: '100%' }}>
@@ -172,9 +138,9 @@ export default function Pool() {
                 </TYPE.mediumHeader>
               </HideSmall>
               <ButtonRow>
-                <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/add/v2/ETH">
+                {/* <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/add/v2/ETH">
                   <Trans>Create a pair</Trans>
-                </ResponsiveButtonSecondary>
+                </ResponsiveButtonSecondary> */}
                 <ResponsiveButtonPrimary
                   id="find-pool-button"
                   as={Link}
@@ -191,7 +157,7 @@ export default function Pool() {
                   as={Link}
                   padding="6px 8px"
                   borderRadius="12px"
-                  to="/add/v2/ETH"
+                  to="/add/v2/BNB"
                 >
                   <Text fontWeight={500} fontSize={16}>
                     <Trans>Add V2 Liquidity</Trans>
@@ -239,7 +205,7 @@ export default function Pool() {
                       />
                     )
                 )}
-                <RowFixed justify="center" style={{ width: '100%' }}>
+                {/* <RowFixed justify="center" style={{ width: '100%' }}>
                   <ButtonOutlined
                     as={Link}
                     to="/migrate/v2"
@@ -255,7 +221,7 @@ export default function Pool() {
                     <ChevronsRight size={16} style={{ marginRight: '8px' }} />
                     <Trans>Migrate Liquidity to V3</Trans>
                   </ButtonOutlined>
-                </RowFixed>
+                </RowFixed> */}
               </>
             ) : (
               <EmptyProposals>

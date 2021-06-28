@@ -23,23 +23,31 @@ import { useAppDispatch, useAppSelector } from 'state/hooks'
  * @param minBlockNumber minimum block number of the result set
  */
 async function fetchChunk(
-  multicall2Contract: Multicall2,
+  multicall2Contract: any,
   chunk: Call[],
   minBlockNumber: number
 ): Promise<{
   results: { success: boolean; returnData: string }[]
   blockNumber: number
 }> {
-  console.debug('Fetching chunk', chunk, minBlockNumber)
-  let resultsBlockNumber: number
-  let results: { success: boolean; returnData: string }[]
+  console.log('multicall2Contract', multicall2Contract)
+  // console.debug('Fetching chunk', chunk, minBlockNumber)
+  // let resultsBlockNumber: number
+  // // let results
+  // let results: { success: boolean; returnData: string }[]
+  // try {
+  //   // ;[resultsBlockNumber, results] = await multicall2Contract.aggregate(chunk.map((obj) => [obj.address, obj.callData]))
+  //   const { blockNumber, returnData } = await multicall2Contract.callStatic.tryBlockAndAggregate(
+  //     false,
+  //     chunk.map((obj) => ({ target: obj.address, callData: obj.callData }))
+  //   )
+  //   resultsBlockNumber = blockNumber.toNumber()
+  //   results = returnData
+  let resultsBlockNumber
+  let results
   try {
-    const { blockNumber, returnData } = await multicall2Contract.callStatic.tryBlockAndAggregate(
-      false,
-      chunk.map((obj) => ({ target: obj.address, callData: obj.callData }))
-    )
-    resultsBlockNumber = blockNumber.toNumber()
-    results = returnData
+    ;[resultsBlockNumber, results] = await multicall2Contract.aggregate(chunk.map((obj) => [obj.address, obj.callData]))
+    // ;[resultsBlockNumber, results] = await multicall2Contract.aggregate(chunk.map((obj) => [obj.address, obj.callData]))
   } catch (error) {
     console.debug('Failed to fetch chunk', error)
     throw error

@@ -3,7 +3,6 @@ import React, { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components/macro'
 import tokenLogo from '../../assets/images/token-logo.png'
-import { UNI } from '../../constants/tokens'
 import { useTotalSupply } from '../../hooks/useTotalSupply'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { useMerkleDistributorContract } from '../../hooks/useContract'
@@ -43,7 +42,7 @@ const StyledClose = styled(X)`
  */
 export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowUniBalanceModal: any }) {
   const { account, chainId } = useActiveWeb3React()
-  const uni = chainId ? UNI[chainId] : undefined
+  const uni = undefined as any
 
   const total = useAggregateUniBalance()
   const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(account ?? undefined, uni)

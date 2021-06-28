@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react'
-import { UNI } from '../../constants/tokens'
+// import { UNI } from '../../constants/tokens'
 
 import Modal from '../Modal'
 import { AutoColumn } from '../Column'
@@ -42,7 +42,7 @@ interface VoteModalProps {
 }
 
 export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalProps) {
-  const { account, chainId } = useActiveWeb3React()
+  const { account } = useActiveWeb3React()
 
   // state for delegate input
   const [usingDelegate, setUsingDelegate] = useState(false)
@@ -57,7 +57,7 @@ export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalPro
   const { address: parsedAddress } = useENS(activeDelegate)
 
   // get the number of votes available to delegate
-  const uniBalance = useTokenBalance(account ?? undefined, chainId ? UNI[chainId] : undefined)
+  const uniBalance = useTokenBalance(account ?? undefined, undefined)
 
   const delegateCallback = useDelegateCallback()
 

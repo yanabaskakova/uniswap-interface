@@ -14,7 +14,7 @@ import useIsArgentWallet from '../../hooks/useIsArgentWallet'
 import { useTotalSupply } from '../../hooks/useTotalSupply'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { useToken } from '../../hooks/Tokens'
-import { usePairContract, useV2MigratorContract } from '../../hooks/useContract'
+import { usePairContract } from '../../hooks/useContract'
 import { NEVER_RELOAD, useSingleCallResult } from '../../state/multicall/hooks'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { BackArrow, ExternalLink, TYPE } from '../../theme'
@@ -232,7 +232,7 @@ function V2PairMigration({
   const [confirmingMigration, setConfirmingMigration] = useState<boolean>(false)
   const [pendingMigrationHash, setPendingMigrationHash] = useState<string | null>(null)
 
-  const migrator = useV2MigratorContract()
+  const migrator = undefined as any
 
   // approvals
   const [approval, approveManually] = useApproveCallback(pairBalance, migrator?.address)
@@ -281,7 +281,7 @@ function V2PairMigration({
     // permit if necessary
     if (signatureData) {
       data.push(
-        migrator.interface.encodeFunctionData('selfPermit', [
+        migrator?.interface.encodeFunctionData('selfPermit', [
           pair.address,
           `0x${pairBalance.quotient.toString(16)}`,
           deadlineToUse,
@@ -295,7 +295,7 @@ function V2PairMigration({
     // create/initialize pool if necessary
     if (noLiquidity) {
       data.push(
-        migrator.interface.encodeFunctionData('createAndInitializePoolIfNecessary', [
+        migrator?.interface.encodeFunctionData('createAndInitializePoolIfNecessary', [
           token0.address,
           token1.address,
           feeAmount,
@@ -306,7 +306,7 @@ function V2PairMigration({
 
     // TODO could save gas by not doing this in multicall
     data.push(
-      migrator.interface.encodeFunctionData('migrate', [
+      migrator?.interface.encodeFunctionData('migrate', [
         {
           pair: pair.address,
           liquidityToMigrate: `0x${pairBalance.quotient.toString(16)}`,
@@ -327,9 +327,9 @@ function V2PairMigration({
 
     setConfirmingMigration(true)
 
-    migrator.estimateGas
+    migrator?.estimateGas
       .multicall(data)
-      .then((gasEstimate) => {
+      .then((gasEstimate: any) => {
         return migrator
           .multicall(data, { gasLimit: calculateGasMargin(gasEstimate) })
           .then((response: TransactionResponse) => {
@@ -372,6 +372,10 @@ function V2PairMigration({
   ])
 
   const isSuccessfullyMigrated = !!pendingMigrationHash && JSBI.equal(pairBalance.quotient, ZERO)
+
+  if (!migrator) {
+    return null
+  }
 
   return (
     <AutoColumn gap="20px">

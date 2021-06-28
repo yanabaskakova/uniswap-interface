@@ -18,7 +18,7 @@ import { LoadingRows } from './styleds'
 import Toggle from 'components/Toggle'
 import { useUserHideClosedPositions } from 'state/user/hooks'
 
-import CTACards from './CTACards'
+// import CTACards from './CTACards'
 import { PositionDetails } from 'types/position'
 
 const PageWrapper = styled(AutoColumn)`
@@ -199,7 +199,7 @@ export default function Pool() {
               </ButtonRow>
             </TitleRow>
 
-            <CTACards />
+            {/* <CTACards /> */}
 
             {closedPositions.length > 0 ? (
               <ShowInactiveToggle>
@@ -233,12 +233,12 @@ export default function Pool() {
                 <PositionList positions={filteredPositions} />
               ) : (
                 <NoLiquidity>
-                  <TYPE.mediumHeader color={theme.text3} textAlign="center">
+                  {/* <TYPE.mediumHeader color={theme.text3} textAlign="center">
                     <Inbox size={48} strokeWidth={1} style={{ marginBottom: '.5rem' }} />
                     <div>
                       <Trans>Your V3 liquidity positions will appear here.</Trans>
                     </div>
-                  </TYPE.mediumHeader>
+                  </TYPE.mediumHeader> */}
                   {!account ? (
                     <ButtonPrimary style={{ marginTop: '2em', padding: '8px 16px' }} onClick={toggleWalletModal}>
                       <Trans>Connect a wallet</Trans>

@@ -270,13 +270,14 @@ export const StyledMenuButton = styled.button`
 `
 
 const NETWORK_LABELS: { [chainId in SupportedChainId | number]: string } = {
-  [SupportedChainId.MAINNET]: 'Mainnet',
-  [SupportedChainId.RINKEBY]: 'Rinkeby',
-  [SupportedChainId.ROPSTEN]: 'Ropsten',
-  [SupportedChainId.GOERLI]: 'Görli',
-  [SupportedChainId.KOVAN]: 'Kovan',
-  [SupportedChainId.ARBITRUM_KOVAN]: 'kArbitrum',
-  [SupportedChainId.ARBITRUM_ONE]: 'Arbitrum One',
+  // [SupportedChainId.MAINNET]: 'Mainnet',
+  // [SupportedChainId.RINKEBY]: 'Rinkeby',
+  // [SupportedChainId.ROPSTEN]: 'Ropsten',
+  // [SupportedChainId.GOERLI]: 'Görli',
+  // [SupportedChainId.KOVAN]: 'Kovan',
+  [SupportedChainId.BSC_TESTNET]: 'BSC Testnet',
+  // [SupportedChainId.ARBITRUM_KOVAN]: 'kArbitrum',
+  // [SupportedChainId.ARBITRUM_ONE]: 'Arbitrum One',
 }
 
 export default function Header() {
@@ -314,7 +315,7 @@ export default function Header() {
         <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
           <Trans>Swap</Trans>
         </StyledNavLink>
-        {/* <StyledNavLink
+        <StyledNavLink
           id={`pool-nav-link`}
           to={'/pool'}
           isActive={(match, { pathname }) =>
@@ -326,7 +327,7 @@ export default function Header() {
           }
         >
           <Trans>Pool</Trans>
-        </StyledNavLink> */}
+        </StyledNavLink>
         {/* <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
           <Trans>Vote</Trans>
         </StyledNavLink> */}
@@ -338,7 +339,7 @@ export default function Header() {
       <HeaderControls>
         <HeaderElement>
           <HideSmall>
-            {chainId && chainId !== SupportedChainId.MAINNET && NETWORK_LABELS[chainId] && (
+            {chainId && NETWORK_LABELS[chainId] && (
               <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
             )}
           </HideSmall>

@@ -2,7 +2,7 @@ import React from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components/macro'
 import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
-import { UNI } from '../../constants/tokens'
+// import { UNI } from '../../constants/tokens'
 import { ExternalLink, TYPE } from '../../theme'
 import { RowBetween, RowFixed } from '../../components/Row'
 import { Link } from 'react-router-dom'
@@ -113,7 +113,7 @@ const EmptyProposals = styled.div`
 `
 
 export default function Vote() {
-  const { account, chainId } = useActiveWeb3React()
+  const { account } = useActiveWeb3React()
 
   // toggle for showing delegation modal
   const showDelegateModal = useModalOpen(ApplicationModal.DELEGATE)
@@ -125,10 +125,7 @@ export default function Vote() {
 
   // user data
   const availableVotes: CurrencyAmount<Token> | undefined = useUserVotes()
-  const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(
-    account ?? undefined,
-    chainId ? UNI[chainId] : undefined
-  )
+  const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(account ?? undefined, undefined)
   const userDelegatee: string | undefined = useUserDelegatee()
 
   // show delegation option if they have have a balance, but have not delegated

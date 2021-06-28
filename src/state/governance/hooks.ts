@@ -1,6 +1,6 @@
 import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { isAddress } from 'ethers/lib/utils'
-import { UNI } from '../../constants/tokens'
+// import { UNI } from '../../constants/tokens'
 import { useGovernanceContracts, useUniContract } from '../../hooks/useContract'
 import { calculateGasMargin } from '../../utils/calculateGasMargin'
 import { useSingleCallResult, useSingleContractMultipleData } from '../multicall/hooks'
@@ -214,22 +214,22 @@ export function useUserDelegatee(): string {
 
 // gets the users current votes
 export function useUserVotes(): CurrencyAmount<Token> | undefined {
-  const { account, chainId } = useActiveWeb3React()
+  const { account } = useActiveWeb3React()
   const uniContract = useUniContract()
 
   // check for available votes
-  const uni = chainId ? UNI[chainId] : undefined
+  const uni = undefined as any
   const votes = useSingleCallResult(uniContract, 'getCurrentVotes', [account ?? undefined])?.result?.[0]
   return votes && uni ? CurrencyAmount.fromRawAmount(uni, votes) : undefined
 }
 
 // fetch available votes as of block (usually proposal start block)
 export function useUserVotesAsOfBlock(block: number | undefined): CurrencyAmount<Token> | undefined {
-  const { account, chainId } = useActiveWeb3React()
+  const { account } = useActiveWeb3React()
   const uniContract = useUniContract()
 
   // check for available votes
-  const uni = chainId ? UNI[chainId] : undefined
+  const uni = undefined as any
   const votes = useSingleCallResult(uniContract, 'getPriorVotes', [account ?? undefined, block ?? undefined])
     ?.result?.[0]
   return votes && uni ? CurrencyAmount.fromRawAmount(uni, votes) : undefined

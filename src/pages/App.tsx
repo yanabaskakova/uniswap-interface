@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Redirect, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
 import AddressClaimModal from '../components/claim/AddressClaimModal'
@@ -16,9 +16,9 @@ import Earn from './Earn'
 import Manage from './Earn/Manage'
 import MigrateV2 from './MigrateV2'
 import MigrateV2Pair from './MigrateV2/MigrateV2Pair'
-// import Pool from './Pool'
-// import PoolV2 from './Pool/v2'
-// import PoolFinder from './PoolFinder'
+import Pool from './Pool'
+import PoolV2 from './Pool/v2'
+import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
 import RemoveLiquidityV3 from './RemoveLiquidity/V3'
 import Swap from './Swap'
@@ -26,7 +26,7 @@ import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, Redirec
 // import Vote from './Vote'
 // import VotePage from './Vote/VotePage'
 import { RedirectDuplicateTokenIdsV2 } from './AddLiquidityV2/redirects'
-// import { PositionPage } from './Pool/PositionPage'
+import { PositionPage } from './Pool/PositionPage'
 import AddLiquidity from './AddLiquidity'
 import ApeModeQueryParamReader from 'hooks/useApeModeQueryParamReader'
 
@@ -96,10 +96,12 @@ export default function App() {
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
               <Route exact strict path="/swap" component={Swap} />
 
-              {/* <Route exact strict path="/pool/v2/find" component={PoolFinder} />
+              <Route exact strict path="/pool/v2/find" component={PoolFinder} />
               <Route exact strict path="/pool/v2" component={PoolV2} />
-              <Route exact strict path="/pool" component={Pool} />
-              <Route exact strict path="/pool/:tokenId" component={PositionPage} /> */}
+              <Route exact strict path="/pool" component={Pool}>
+                <Redirect to="/pool/v2" />
+              </Route>
+              <Route exact strict path="/pool/:tokenId" component={PositionPage} />
 
               <Route exact strict path="/add/v2/:currencyIdA?/:currencyIdB?" component={RedirectDuplicateTokenIdsV2} />
               <Route
