@@ -38,7 +38,7 @@ export function useSwapActionHandlers(): {
       dispatch(
         selectCurrency({
           field,
-          currencyId: currency.isToken ? currency.address : currency.isNative ? 'ETH' : '',
+          currencyId: currency.isToken ? currency.address : currency.isNative ? 'ETH' : '', // TODO: CHANGE TO BNB
         })
       )
     },
@@ -254,7 +254,7 @@ export function queryParametersToSwapState(parsedQs: ParsedQs): SwapState {
   let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency)
   if (inputCurrency === '' && outputCurrency === '') {
     // default to ETH input
-    inputCurrency = 'ETH'
+    inputCurrency = 'ETH' // TODO: CHANGE TO BNB
   } else if (inputCurrency === outputCurrency) {
     // clear output if identical
     outputCurrency = ''
