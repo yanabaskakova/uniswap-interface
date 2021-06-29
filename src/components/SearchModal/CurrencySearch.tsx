@@ -107,15 +107,16 @@ export function CurrencySearch({
   const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
 
   const ether = useMemo(() => chainId && ExtendedEther.onChain(chainId), [chainId])
+  console.log('ether', ether)
 
   const filteredSortedTokensWithETH: Currency[] = useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim()
     if (s === '' || s === 'b' || s === 'bn' || s === 'bnb') {
-      return filteredSortedTokens
-      // return ether ? [ether, ...filteredSortedTokens] : filteredSortedTokens
+      // return filteredSortedTokens
+      return ether ? [ether, ...filteredSortedTokens] : filteredSortedTokens
     }
     return filteredSortedTokens
-  }, [debouncedQuery, filteredSortedTokens])
+  }, [debouncedQuery, filteredSortedTokens, ether])
 
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {
@@ -144,7 +145,7 @@ export function CurrencySearch({
       if (e.key === 'Enter') {
         const s = debouncedQuery.toLowerCase().trim()
         if (s === 'bnb' && ether) {
-          // handleCurrencySelect(ether)
+          handleCurrencySelect(ether)
         } else if (filteredSortedTokensWithETH.length > 0) {
           if (
             filteredSortedTokensWithETH[0].symbol?.toLowerCase() === debouncedQuery.trim().toLowerCase() ||

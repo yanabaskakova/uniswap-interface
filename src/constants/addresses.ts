@@ -14,7 +14,7 @@ export const MULTICALL2_ADDRESSES: AddressMap = {
   [SupportedChainId.BSC_TESTNET]: '0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A',
 }
 export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap('0x9b3fEF64b1Aa1144B04f46F8119F2C51c8fD0D1F')
-export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x848289141674B5ffFAdf87902144B3e72AB52560')
+export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x35c3aAdBcF4166e58316BA1348b675B2794F8260')
 export const GOVERNANCE_ADDRESSES: AddressMap[] = [
   constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'),
   {
