@@ -77,8 +77,6 @@ export function CurrencySearch({
 
   const allTokens = useAllTokens()
 
-  console.log('allTokens', allTokens)
-
   // if they input an address, use it
   const isAddressSearch = isAddress(debouncedQuery)
 
@@ -99,31 +97,25 @@ export function CurrencySearch({
   const tokenComparator = useTokenComparator(invertSearchOrder)
 
   const filteredTokens: Token[] = useMemo(() => {
-    console.log('IN filteredTokens')
     return filterTokens(Object.values(allTokens), debouncedQuery)
   }, [allTokens, debouncedQuery])
-
-  console.log('filteredTokens', filteredTokens)
 
   const sortedTokens: Token[] = useMemo(() => {
     return filteredTokens.sort(tokenComparator)
   }, [filteredTokens, tokenComparator])
 
-  console.log('sortedTokens', sortedTokens)
-
   const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
-
-  console.log('filteredSortedTokens', filteredSortedTokens)
 
   const ether = useMemo(() => chainId && ExtendedEther.onChain(chainId), [chainId])
 
   const filteredSortedTokensWithETH: Currency[] = useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim()
     if (s === '' || s === 'b' || s === 'bn' || s === 'bnb') {
-      return ether ? [ether, ...filteredSortedTokens] : filteredSortedTokens
+      return filteredSortedTokens
+      // return ether ? [ether, ...filteredSortedTokens] : filteredSortedTokens
     }
     return filteredSortedTokens
-  }, [debouncedQuery, ether, filteredSortedTokens])
+  }, [debouncedQuery, filteredSortedTokens])
 
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {
@@ -152,7 +144,7 @@ export function CurrencySearch({
       if (e.key === 'Enter') {
         const s = debouncedQuery.toLowerCase().trim()
         if (s === 'bnb' && ether) {
-          handleCurrencySelect(ether)
+          // handleCurrencySelect(ether)
         } else if (filteredSortedTokensWithETH.length > 0) {
           if (
             filteredSortedTokensWithETH[0].symbol?.toLowerCase() === debouncedQuery.trim().toLowerCase() ||
@@ -175,8 +167,6 @@ export function CurrencySearch({
   const filteredInactiveTokens = useSearchInactiveTokenLists(
     filteredTokens.length === 0 || (debouncedQuery.length > 2 && !isAddressSearch) ? debouncedQuery : undefined
   )
-
-  console.log('filteredSortedTokensWithETH', filteredSortedTokensWithETH)
 
   return (
     <ContentWrapper>

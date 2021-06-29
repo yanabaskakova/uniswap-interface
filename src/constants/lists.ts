@@ -1,7 +1,7 @@
 // import tokens from './tokenLists/tokens.json'
 // used to mark unsupported tokens, these are hosted lists of unsupported tokens
 
-console.log('window.location.origin ', window.location.origin)
+// console.log('window.location.origin ', window.location.origin)
 const DEFAULT_LIST = window.location.origin + '/tokens.json'
 // const COMPOUND_LIST = 'https://raw.githubusercontent.com/compound-finance/token-list/master/compound.tokenlist.json'
 // const UMA_LIST = 'https://umaproject.org/uma.tokenlist.json'

@@ -112,11 +112,17 @@ function CurrencyRow({
   style: CSSProperties
 }) {
   const { account } = useActiveWeb3React()
+
+  console.log('account', account)
   const key = currencyKey(currency)
   const selectedTokenList = useCombinedActiveList()
   const isOnSelectedList = isTokenOnList(selectedTokenList, currency.isToken ? currency : undefined)
   const customAdded = useIsUserAddedToken(currency)
   const balance = useCurrencyBalance(account ?? undefined, currency)
+
+  // console.log('balance', balance)
+  // console.log('currency', currency)
+  // console.log('account', account)
 
   // only show add or remove buttons if not on selected list
   return (

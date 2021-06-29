@@ -12,8 +12,8 @@ export const USDT = new Token(
 
 export const VIDYX = new Token(
   SupportedChainId.BSC_TESTNET,
-  '0x244bc7c6acc3a8a5d9ab7a2563b6ec85a07406b4',
-  18,
+  '0x87957D6A2FbBDB092388B9df15817234B844663b',
+  8,
   'VIDYX',
   'VidyX'
 )

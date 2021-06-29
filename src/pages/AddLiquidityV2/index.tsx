@@ -125,6 +125,7 @@ export default function AddLiquidity({
   )
 
   const router = useV2RouterContract()
+  console.log('router', router)
 
   // check whether the user has approved the router on the tokens
   const [approvalA, approveACallback] = useApproveCallback(parsedAmounts[Field.CURRENCY_A], router?.address)
