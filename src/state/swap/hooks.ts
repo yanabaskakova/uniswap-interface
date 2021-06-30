@@ -73,11 +73,14 @@ export function useSwapActionHandlers(): {
 
 // try to parse a user entered amount for a given token
 export function tryParseAmount<T extends Currency>(value?: string, currency?: T): CurrencyAmount<T> | undefined {
+  console.log('tryParseAmount value', value, 'currency', currency)
   if (!value || !currency) {
     return undefined
   }
   try {
     const typedValueParsed = parseUnits(value, currency.decimals).toString()
+
+    console.log('typedValueParsed', typedValueParsed)
     if (typedValueParsed !== '0') {
       return CurrencyAmount.fromRawAmount(currency, JSBI.BigInt(typedValueParsed))
     }
@@ -90,9 +93,10 @@ export function tryParseAmount<T extends Currency>(value?: string, currency?: T)
 }
 
 const BAD_RECIPIENT_ADDRESSES: { [address: string]: true } = {
-  '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f': true, // v2 factory
-  '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a': true, // v2 router 01
-  '0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D': true, // v2 router 02
+  '0x9b3fEF64b1Aa1144B04f46F8119F2C51c8fD0D1F': true, // v2 factory
+  // '0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f': true, // v2 factory
+  // '0xf164fC0Ec4E93095b804a4795bBe1e041497b92a': true, // v2 router 01
+  '0x35c3aAdBcF4166e58316BA1348b675B2794F8260': true, // v2 router 02
 }
 
 /**
@@ -139,6 +143,8 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
   const inputCurrency = useCurrency(inputCurrencyId)
 
   const outputCurrency = useCurrency(outputCurrencyId)
+
+  console.log('outputCurrency', outputCurrency)
   const recipientLookup = useENS(recipient ?? undefined)
   const to: string | null = (recipient === null ? account : recipientLookup.address) ?? null
 
@@ -153,6 +159,9 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
   const bestV2TradeExactIn = useV2TradeExactIn(isExactIn ? parsedAmount : undefined, outputCurrency ?? undefined, {
     maxHops: singleHopOnly ? 1 : undefined,
   })
+
+  console.log('bestV2TradeExactIn', bestV2TradeExactIn)
+  console.log('isExactIn', isExactIn)
   const bestV2TradeExactOut = useV2TradeExactOut(inputCurrency ?? undefined, !isExactIn ? parsedAmount : undefined, {
     maxHops: singleHopOnly ? 1 : undefined,
   })
@@ -162,6 +171,8 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
 
   const v2Trade = isExactIn ? bestV2TradeExactIn : bestV2TradeExactOut
   const v3Trade = (isExactIn ? bestV3TradeExactIn : bestV3TradeExactOut) ?? undefined
+
+  console.log('v2Trade', v2Trade)
 
   const currencyBalances = {
     [Field.INPUT]: relevantTokenBalances[0],
@@ -200,6 +211,8 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
   }
 
   const toggledTrade = (toggledVersion === Version.v2 ? v2Trade : v3Trade.trade) ?? undefined
+
+  console.log('toggledTrade', toggledTrade, toggledVersion)
   const allowedSlippage = useSwapSlippageTolerance(toggledTrade)
 
   // compare input balance to max input based on version

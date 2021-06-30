@@ -3337,9 +3337,9 @@
     "@uniswap/lib" "1.1.1"
     "@uniswap/v2-core" "1.0.0"
 
-"@uniswap/v2-sdk@https://github.com/yanabaskakova/uniswap-v2-sdk.git":
+"@uniswap/v2-sdk@git+https://github.com/yanabaskakova/uniswap-v2-sdk.git":
   version "3.0.0"
-  resolved "https://github.com/yanabaskakova/uniswap-v2-sdk.git#877c2938383ffa611cdbccb6390943acb0e90fa9"
+  resolved "git+https://github.com/yanabaskakova/uniswap-v2-sdk.git#877c2938383ffa611cdbccb6390943acb0e90fa9"
   dependencies:
     "@ethersproject/address" "^5.0.0"
     "@ethersproject/solidity" "^5.0.0"

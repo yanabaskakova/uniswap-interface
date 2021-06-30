@@ -50,10 +50,11 @@ export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ...WETH9,
   [SupportedChainId.BSC_TESTNET]: new Token(
     SupportedChainId.BSC_TESTNET,
-    '0x848289141674B5ffFAdf87902144B3e72AB52560',
+    '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
+    // '0x848289141674B5ffFAdf87902144B3e72AB52560',
     18,
-    'BSC',
-    'BSC Testnet'
+    'WBNB',
+    'Wrapperd Binance Coin'
   ),
 }
 

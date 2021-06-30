@@ -19,6 +19,8 @@ export function useAllCurrencyCombinations(currencyA?: Currency, currencyB?: Cur
     return [...common, ...additionalA, ...additionalB]
   }, [chainId, tokenA, tokenB])
 
+  console.log('bases', bases)
+
   const basePairs: [Token, Token][] = useMemo(
     () => flatMap(bases, (base): [Token, Token][] => bases.map((otherBase) => [base, otherBase])),
     [bases]

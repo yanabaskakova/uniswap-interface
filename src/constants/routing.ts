@@ -1,7 +1,7 @@
 // a list of tokens by chain
 import { Currency, Token } from '@uniswap/sdk-core'
 import { SupportedChainId } from './chains'
-import { USDT } from './tokens'
+import { ExtendedEther, USDT, WETH9_EXTENDED } from './tokens'
 
 export const WETH = {
   // [ChainId.MAINNET]: new Token(
@@ -55,7 +55,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [1]: [USDT],
+  // [1]: [USDT],
 }
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
   [1]: {
@@ -98,6 +98,10 @@ export const COMMON_BASES: ChainCurrencyList = {
   //   ExtendedEther.onChain(SupportedChainId.ARBITRUM_ONE),
   //   WETH9_EXTENDED[SupportedChainId.ARBITRUM_ONE],
   // ],
+  [SupportedChainId.BSC_TESTNET]: [
+    ExtendedEther.onChain(SupportedChainId.BSC_TESTNET),
+    WETH9_EXTENDED[SupportedChainId.BSC_TESTNET],
+  ],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
