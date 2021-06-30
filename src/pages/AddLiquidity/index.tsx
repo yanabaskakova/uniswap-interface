@@ -299,10 +299,11 @@ export default function AddLiquidity({
       } else {
         // prevent weth + eth
         const isETHOrWETHNew =
-          currencyIdNew === 'ETH' || (chainId !== undefined && currencyIdNew === WETH9_EXTENDED[chainId]?.address)
+          currencyIdNew === 'BNB' || (chainId !== undefined && currencyIdNew === WETH9_EXTENDED[chainId]?.address)
+        // currencyIdNew === 'ETH' || (chainId !== undefined && currencyIdNew === WETH9_EXTENDED[chainId]?.address)
         const isETHOrWETHOther =
           currencyIdOther !== undefined &&
-          (currencyIdOther === 'ETH' || (chainId !== undefined && currencyIdOther === WETH9_EXTENDED[chainId]?.address))
+          (currencyIdOther === 'BNB' || (chainId !== undefined && currencyIdOther === WETH9_EXTENDED[chainId]?.address))
 
         if (isETHOrWETHNew && isETHOrWETHOther) {
           return [currencyIdNew, undefined]

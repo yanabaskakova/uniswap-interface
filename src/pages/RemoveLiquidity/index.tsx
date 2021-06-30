@@ -536,8 +536,8 @@ export default function RemoveLiquidity({
                           </StyledInternalLink>
                         ) : oneCurrencyIsWETH ? (
                           <StyledInternalLink
-                            to={`/remove/v2/${currencyA?.equals(WETH9_EXTENDED[chainId]) ? 'ETH' : currencyIdA}/${
-                              currencyB?.equals(WETH9_EXTENDED[chainId]) ? 'ETH' : currencyIdB
+                            to={`/remove/v2/${currencyA?.equals(WETH9_EXTENDED[chainId]) ? 'BNB' : currencyIdA}/${
+                              currencyB?.equals(WETH9_EXTENDED[chainId]) ? 'BNB' : currencyIdB
                             }`}
                           >
                             Receive ETH
