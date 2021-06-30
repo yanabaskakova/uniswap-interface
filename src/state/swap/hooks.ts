@@ -73,14 +73,12 @@ export function useSwapActionHandlers(): {
 
 // try to parse a user entered amount for a given token
 export function tryParseAmount<T extends Currency>(value?: string, currency?: T): CurrencyAmount<T> | undefined {
-  console.log('tryParseAmount value', value, 'currency', currency)
   if (!value || !currency) {
     return undefined
   }
   try {
     const typedValueParsed = parseUnits(value, currency.decimals).toString()
 
-    console.log('typedValueParsed', typedValueParsed)
     if (typedValueParsed !== '0') {
       return CurrencyAmount.fromRawAmount(currency, JSBI.BigInt(typedValueParsed))
     }
@@ -144,7 +142,6 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
 
   const outputCurrency = useCurrency(outputCurrencyId)
 
-  console.log('outputCurrency', outputCurrency)
   const recipientLookup = useENS(recipient ?? undefined)
   const to: string | null = (recipient === null ? account : recipientLookup.address) ?? null
 
@@ -160,8 +157,6 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
     maxHops: singleHopOnly ? 1 : undefined,
   })
 
-  console.log('bestV2TradeExactIn', bestV2TradeExactIn)
-  console.log('isExactIn', isExactIn)
   const bestV2TradeExactOut = useV2TradeExactOut(inputCurrency ?? undefined, !isExactIn ? parsedAmount : undefined, {
     maxHops: singleHopOnly ? 1 : undefined,
   })
@@ -171,8 +166,6 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
 
   const v2Trade = isExactIn ? bestV2TradeExactIn : bestV2TradeExactOut
   const v3Trade = (isExactIn ? bestV3TradeExactIn : bestV3TradeExactOut) ?? undefined
-
-  console.log('v2Trade', v2Trade)
 
   const currencyBalances = {
     [Field.INPUT]: relevantTokenBalances[0],
@@ -212,7 +205,6 @@ export function useDerivedSwapInfo(toggledVersion: Version): {
 
   const toggledTrade = (toggledVersion === Version.v2 ? v2Trade : v3Trade.trade) ?? undefined
 
-  console.log('toggledTrade', toggledTrade, toggledVersion)
   const allowedSlippage = useSwapSlippageTolerance(toggledTrade)
 
   // compare input balance to max input based on version

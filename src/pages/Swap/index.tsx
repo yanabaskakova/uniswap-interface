@@ -7,13 +7,13 @@ import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter
 import { MouseoverTooltip, MouseoverTooltipContent } from 'components/Tooltip'
 import JSBI from 'jsbi'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { ArrowDown, ArrowLeft, CheckCircle, HelpCircle, Info } from 'react-feather'
+import { ArrowDown, CheckCircle, HelpCircle, Info } from 'react-feather'
 import ReactGA from 'react-ga'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import { Text } from 'rebass'
 import styled, { ThemeContext } from 'styled-components'
 import AddressInputPanel from '../../components/AddressInputPanel'
-import { ButtonConfirmed, ButtonError, ButtonGray, ButtonLight, ButtonPrimary } from '../../components/Button'
+import { ButtonConfirmed, ButtonError, ButtonLight, ButtonPrimary } from '../../components/Button'
 import { GreyCard } from '../../components/Card'
 import { AutoColumn } from '../../components/Column'
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
@@ -37,7 +37,7 @@ import { useERC20PermitFromTrade, UseERC20PermitState } from '../../hooks/useERC
 import useIsArgentWallet from '../../hooks/useIsArgentWallet'
 import { useIsSwapUnsupported } from '../../hooks/useIsSwapUnsupported'
 import { useSwapCallback } from '../../hooks/useSwapCallback'
-import useToggledVersion, { Version } from '../../hooks/useToggledVersion'
+import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUSDCValue } from '../../hooks/useUSDCPrice'
 import useWrapCallback, { WrapType } from '../../hooks/useWrapCallback'
 import { useActiveWeb3React } from '../../hooks/web3'
@@ -50,7 +50,7 @@ import {
   useSwapState,
 } from '../../state/swap/hooks'
 import { useExpertModeManager, useUserSingleHopOnly } from '../../state/user/hooks'
-import { HideSmall, LinkStyledButton, TYPE } from '../../theme'
+import { LinkStyledButton, TYPE } from '../../theme'
 import { computeFiatValuePriceImpact } from '../../utils/computeFiatValuePriceImpact'
 import { getTradeVersion } from '../../utils/getTradeVersion'
 // import { isTradeBetter } from '../../utils/isTradeBetter'
@@ -105,8 +105,6 @@ export default function Swap({ history }: RouteComponentProps) {
   // get version from the url
   const toggledVersion = useToggledVersion()
 
-  // console.log('toggledVersion', toggledVersion)
-
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
   const {
@@ -119,10 +117,6 @@ export default function Swap({ history }: RouteComponentProps) {
     currencies,
     inputError: swapInputError,
   } = useDerivedSwapInfo(toggledVersion)
-
-  // console.log('swapInputError', swapInputError)
-
-  console.log('trade', trade)
 
   const {
     wrapType,
@@ -145,8 +139,6 @@ export default function Swap({ history }: RouteComponentProps) {
           },
     [independentField, parsedAmount, showWrap, trade]
   )
-
-  console.log('parsedAmounts', parsedAmounts)
 
   const fiatValueInput = useUSDCValue(parsedAmounts[Field.INPUT])
   const fiatValueOutput = useUSDCValue(parsedAmounts[Field.OUTPUT])
@@ -455,52 +447,6 @@ export default function Swap({ history }: RouteComponentProps) {
 
             {showWrap ? null : (
               <Row style={{ justifyContent: !trade ? 'center' : 'space-between' }}>
-                <RowFixed>
-                  {toggledVersion === Version.v2 && (
-                    <ButtonGray
-                      width="fit-content"
-                      padding="0.1rem 0.5rem 0.1rem 0.35rem"
-                      as={Link}
-                      to="/swap"
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        height: '24px',
-                        opacity: 0.8,
-                        lineHeight: '120%',
-                        marginLeft: '0.75rem',
-                      }}
-                    >
-                      <ArrowLeft color={theme.text3} size={12} /> &nbsp;
-                      <TYPE.main style={{ lineHeight: '120%' }} fontSize={12}>
-                        <Trans>
-                          <HideSmall>Back to </HideSmall>
-                          V3
-                        </Trans>
-                      </TYPE.main>
-                    </ButtonGray>
-                  )}
-
-                  {toggledVersion === Version.v3 && trade && (
-                    <ButtonGray
-                      width="fit-content"
-                      padding="0.1rem 0.5rem"
-                      disabled
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        height: '24px',
-                        opacity: 0.4,
-                        marginLeft: '0.25rem',
-                      }}
-                    >
-                      <TYPE.black fontSize={12}>
-                        <Trans>V3</Trans>
-                      </TYPE.black>
-                    </ButtonGray>
-                  )}
-                </RowFixed>
                 {trade ? (
                   <RowFixed>
                     <TradePrice

@@ -39,13 +39,19 @@ export default function CurrencyLogo({
   const srcs: string[] = useMemo(() => {
     if (!currency || currency.isNative) return []
 
+    if (currency.symbol === 'WBNB') {
+      return [EthereumLogo]
+    }
+
     if (currency.isToken) {
       const defaultUrls = currency.chainId === 1 ? [getTokenLogoURL(currency.address)] : []
+
       if (currency instanceof WrappedTokenInfo) {
         return [...uriLocations, ...defaultUrls]
       }
       return defaultUrls
     }
+
     return []
   }, [currency, uriLocations])
 

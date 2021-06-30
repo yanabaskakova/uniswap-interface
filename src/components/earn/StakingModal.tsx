@@ -150,8 +150,6 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
     }
   }
 
-  console.log('stakingInfo.stakedAmount.currency', stakingInfo.stakedAmount.currency)
-
   return (
     <Modal isOpen={isOpen} onDismiss={wrappedOnDismiss} maxHeight={90}>
       {!attempting && !hash && (
