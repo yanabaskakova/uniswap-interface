@@ -3302,18 +3302,6 @@
   resolved "https://registry.npmjs.org/@uniswap/merkle-distributor/-/merkle-distributor-1.0.1.tgz"
   integrity sha512-5gDiTI5hrXIh5UWTrxKYjw30QQDnpl8ckDSpefldNenDlYO1RKkdUYMYpvrqGi2r7YzLYTlO6+TDlNs6O7hDRw==
 
-"@uniswap/sdk-core@^3.0.0-alpha.3":
-  version "3.0.0-alpha.3"
-  resolved "https://registry.npmjs.org/@uniswap/sdk-core/-/sdk-core-3.0.0-alpha.3.tgz"
-  integrity sha512-SS6fFbFZT2s/oq1dCdbqLGppVszfL1dkP8uQOIgXm9qecH9Vt70zTwQU73bLP2VskFZcpkN5inTAwSZiZSs5wA==
-  dependencies:
-    "@ethersproject/address" "^5.0.2"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.4"
-    tiny-invariant "^1.1.0"
-    toformat "^2.0.0"
-
 "@uniswap/sdk-core@git+https://github.com/yanabaskakova/uniswap-sdk-core.git":
   version "3.0.0"
   resolved "git+https://github.com/yanabaskakova/uniswap-sdk-core.git#1c503f4452f240b9b82a017f040ecea7c155aac3"
@@ -3350,11 +3338,11 @@
 
 "@uniswap/v2-sdk@git+https://github.com/yanabaskakova/uniswap-v2-sdk.git":
   version "3.0.0"
-  resolved "git+https://github.com/yanabaskakova/uniswap-v2-sdk.git#877c2938383ffa611cdbccb6390943acb0e90fa9"
+  resolved "git+https://github.com/yanabaskakova/uniswap-v2-sdk.git#223a9e071eca493febddaf3af5cd36894ed3f5f5"
   dependencies:
     "@ethersproject/address" "^5.0.0"
     "@ethersproject/solidity" "^5.0.0"
-    "@uniswap/sdk-core" "^3.0.0-alpha.3"
+    "@uniswap/sdk-core" "git+https://github.com/yanabaskakova/uniswap-sdk-core.git"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
 
@@ -3374,14 +3362,13 @@
     "@uniswap/v3-core" "1.0.0"
     base64-sol "1.0.1"
 
-"@uniswap/v3-sdk@^3.0.0-alpha.9":
-  version "3.0.0-alpha.9"
-  resolved "https://registry.npmjs.org/@uniswap/v3-sdk/-/v3-sdk-3.0.0-alpha.9.tgz"
-  integrity sha512-mfISrPYixSwpwG2XLzXJXJdmGbO76bycXrpNe7kEpcyPUpByejAwuYOnmAZBwZuvDylXtQZS6DiDDRghzNrc9w==
+"@uniswap/v3-sdk@git+https://github.com/yanabaskakova/uniswap-v3-sdk.git":
+  version "3.1.0"
+  resolved "git+https://github.com/yanabaskakova/uniswap-v3-sdk.git#be240d462c6ed30a0a095b86c5b4f09c7dc4814b"
   dependencies:
     "@ethersproject/abi" "^5.0.12"
     "@ethersproject/solidity" "^5.0.9"
-    "@uniswap/sdk-core" "^3.0.0-alpha.3"
+    "@uniswap/sdk-core" "git+https://github.com/yanabaskakova/uniswap-sdk-core.git"
     "@uniswap/v3-periphery" "1.0.0"
     tiny-invariant "^1.1.0"
     tiny-warning "^1.0.3"
