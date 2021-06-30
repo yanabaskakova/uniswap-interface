@@ -91,6 +91,7 @@ export function TransactionSubmittedContent({
   currencyToAdd?: Currency | undefined
   inline?: boolean // not in modal
 }) {
+  console.log('currencyToAdd', currencyToAdd)
   const theme = useContext(ThemeContext)
 
   const { library } = useActiveWeb3React()

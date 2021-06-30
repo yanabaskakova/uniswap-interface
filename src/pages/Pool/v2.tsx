@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom'
 import { SwapPoolTabs } from '../../components/NavigationTabs'
 import FullPositionCard from '../../components/PositionCard'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
-import { ExternalLink, TYPE, HideSmall } from '../../theme'
+import { TYPE, HideSmall } from '../../theme'
 import { Text } from 'rebass'
 import Card from '../../components/Card'
 import { RowBetween, RowFixed } from '../../components/Row'
-import { ButtonPrimary, ButtonSecondary } from '../../components/Button'
+import { ButtonPrimary } from '../../components/Button'
 
 import { AutoColumn } from '../../components/Column'
 
@@ -182,16 +182,6 @@ export default function Pool() {
               </EmptyProposals>
             ) : allV2PairsWithLiquidity?.length > 0 || stakingPairs?.length > 0 ? (
               <>
-                <ButtonSecondary>
-                  <RowBetween>
-                    <Trans>
-                      <ExternalLink href={'https://v2.info.uniswap.org/account/' + account}>
-                        Account analytics and accrued fees
-                      </ExternalLink>
-                      <span> ↗ </span>
-                    </Trans>
-                  </RowBetween>
-                </ButtonSecondary>
                 {v2PairsWithoutStakedAmount.map((v2Pair) => (
                   <FullPositionCard key={v2Pair.liquidityToken.address} pair={v2Pair} />
                 ))}
