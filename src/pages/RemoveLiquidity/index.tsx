@@ -28,7 +28,6 @@ import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import { StyledInternalLink, TYPE } from '../../theme'
-import { calculateGasMargin } from '../../utils/calculateGasMargin'
 import { calculateSlippageAmount } from '../../utils/calculateSlippageAmount'
 import { currencyId } from '../../utils/currencyId'
 import useDebouncedChangeHandler from '../../hooks/useDebouncedChangeHandler'
@@ -41,7 +40,7 @@ import { useDerivedBurnInfo, useBurnState } from '../../state/burn/hooks'
 import { Field } from '../../state/burn/actions'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { useUserSlippageToleranceWithDefault } from '../../state/user/hooks'
-import { BigNumber } from '@ethersproject/bignumber'
+
 import { t, Trans } from '@lingui/macro'
 
 const DEFAULT_REMOVE_LIQUIDITY_SLIPPAGE_TOLERANCE = new Percent(5, 100)
@@ -237,55 +236,65 @@ export default function RemoveLiquidity({
       throw new Error('Attempting to confirm without approval or a signature. Please contact support.')
     }
 
-    const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
-      methodNames.map((methodName) =>
-        router.estimateGas[methodName](...args)
-          .then(calculateGasMargin)
-          .catch((error) => {
-            console.error(`estimateGas failed`, methodName, args, error)
-            return undefined
-          })
-      )
-    )
+    // const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
+    //   methodNames.map((methodName) =>
+    //     router.estimateGas[methodName](...args)
+    //       .then(calculateGasMargin)
+    //       .catch((error) => {
+    //         console.error(`estimateGas failed`, methodName, args, error)
+    //         return undefined
+    //       })
+    //   )
+    // )\
 
-    const indexOfSuccessfulEstimation = safeGasEstimates.findIndex((safeGasEstimate) =>
-      BigNumber.isBigNumber(safeGasEstimate)
-    )
+    // const safeGasEstimates = [3000000]
+
+    // console.log('safeGasEstimates', safeGasEstimates)
+
+    // const indexOfSuccessfulEstimation = safeGasEstimates.findIndex((safeGasEstimate) =>
+    //   BigNumber.isBigNumber(safeGasEstimate)
+    // )
 
     // all estimations failed...
-    if (indexOfSuccessfulEstimation === -1) {
-      console.error('This transaction would fail. Please contact support.')
-    } else {
-      const methodName = methodNames[indexOfSuccessfulEstimation]
-      const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
+    // if (-1 === -1 && false) {
+    //   // if (indexOfSuccessfulEstimation === -1 && false) {
+    //   console.error('This transaction would fail. Please contact support.')
+    // } else {
+    const methodName = methodNames[0]
 
-      setAttemptingTxn(true)
-      await router[methodName](...args, {
-        gasLimit: safeGasEstimate,
+    console.log('methodName', methodName)
+    console.log('methodName router', router)
+    // const methodName = methodNames[indexOfSuccessfulEstimation]
+    const safeGasEstimate = 3000000
+    // const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
+
+    setAttemptingTxn(true)
+    await router[methodName](...args, {
+      gasLimit: safeGasEstimate,
+    })
+      .then((response: TransactionResponse) => {
+        setAttemptingTxn(false)
+
+        addTransaction(response, {
+          summary: t`Remove ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(3)} ${
+            currencyA?.symbol
+          } and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(3)} ${currencyB?.symbol}`,
+        })
+
+        setTxHash(response.hash)
+
+        ReactGA.event({
+          category: 'Liquidity',
+          action: 'Remove',
+          label: [currencyA?.symbol, currencyB?.symbol].join('/'),
+        })
       })
-        .then((response: TransactionResponse) => {
-          setAttemptingTxn(false)
-
-          addTransaction(response, {
-            summary: t`Remove ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(3)} ${
-              currencyA?.symbol
-            } and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(3)} ${currencyB?.symbol}`,
-          })
-
-          setTxHash(response.hash)
-
-          ReactGA.event({
-            category: 'Liquidity',
-            action: 'Remove',
-            label: [currencyA?.symbol, currencyB?.symbol].join('/'),
-          })
-        })
-        .catch((error: Error) => {
-          setAttemptingTxn(false)
-          // we only care if the error is something _other_ than the user rejected the tx
-          console.error(error)
-        })
-    }
+      .catch((error: Error) => {
+        setAttemptingTxn(false)
+        // we only care if the error is something _other_ than the user rejected the tx
+        console.error(error)
+      })
+    // }
   }
 
   function modalHeader() {
@@ -333,7 +342,7 @@ export default function RemoveLiquidity({
         <RowBetween>
           <Text color={theme.text2} fontWeight={500} fontSize={16}>
             <Trans>
-              UNI {currencyA?.symbol}/{currencyB?.symbol} Burned
+              {currencyA?.symbol}/{currencyB?.symbol} Burned
             </Trans>
           </Text>
           <RowFixed>

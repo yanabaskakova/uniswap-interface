@@ -126,6 +126,7 @@ export function useERC20Permit(
   const { account, chainId, library } = useActiveWeb3React()
   const transactionDeadline = useTransactionDeadline()
   const tokenAddress = currencyAmount?.currency?.isToken ? currencyAmount.currency.address : undefined
+
   const eip2612Contract = useEIP2612Contract(tokenAddress)
   const isArgentWallet = useIsArgentWallet()
   const nonceInputs = useMemo(() => [account ?? undefined], [account])
@@ -174,6 +175,7 @@ export function useERC20Permit(
       signatureData.spender === spender &&
       ('allowed' in signatureData || JSBI.equal(JSBI.BigInt(signatureData.amount), currencyAmount.quotient))
 
+    console.log('isSignatureDataValid', isSignatureDataValid)
     return {
       state: isSignatureDataValid ? UseERC20PermitState.SIGNED : UseERC20PermitState.NOT_SIGNED,
       signatureData: isSignatureDataValid ? signatureData : null,
@@ -209,6 +211,7 @@ export function useERC20Permit(
               verifyingContract: tokenAddress,
               chainId,
             }
+
         const data = JSON.stringify({
           types: {
             EIP712Domain: permitInfo.version ? EIP712_DOMAIN_TYPE : EIP712_DOMAIN_TYPE_NO_VERSION,
@@ -259,7 +262,7 @@ export function useERC20Permit(
 
 const REMOVE_V2_LIQUIDITY_PERMIT_INFO: PermitInfo = {
   version: '1',
-  name: 'Uniswap V2',
+  name: 'RaraSwap LP Token',
   type: PermitType.AMOUNT,
 }
 
