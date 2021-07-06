@@ -13,8 +13,8 @@ import { SupportedChainId } from '../../constants/chains'
 import { useActiveWeb3React } from '../../hooks/web3'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances } from '../../state/wallet/hooks'
-import { CardNoise } from '../earn/styled'
-import { TYPE } from '../../theme'
+// import { CardNoise } from '../earn/styled'
+// import { TYPE } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Menu from '../Menu'
@@ -22,10 +22,10 @@ import Menu from '../Menu'
 import Row, { RowFixed } from '../Row'
 import Web3Status from '../Web3Status'
 import ClaimModal from '../claim/ClaimModal'
-import { useToggleSelfClaimModal, useShowClaimPopup } from '../../state/application/hooks'
-import { useUserHasAvailableClaim } from '../../state/claim/hooks'
-import { useUserHasSubmittedClaim } from '../../state/transactions/hooks'
-import { Dots } from '../swap/styleds'
+// import { useToggleSelfClaimModal, useShowClaimPopup } from '../../state/application/hooks'
+// import { useUserHasAvailableClaim } from '../../state/claim/hooks'
+// import { useUserHasSubmittedClaim } from '../../state/transactions/hooks'
+// import { Dots } from '../swap/styleds'
 import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
 
@@ -140,28 +140,28 @@ const AccountElement = styled.div<{ active: boolean }>`
   }
 `
 
-const UNIAmount = styled(AccountElement)`
-  color: white;
-  padding: 4px 8px;
-  height: 36px;
-  font-weight: 500;
-  background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
-`
+// const UNIAmount = styled(AccountElement)`
+//   color: white;
+//   padding: 4px 8px;
+//   height: 36px;
+//   font-weight: 500;
+//   background-color: ${({ theme }) => theme.bg3};
+//   background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+// `
 
-const UNIWrapper = styled.span`
-  width: fit-content;
-  position: relative;
-  cursor: pointer;
+// const UNIWrapper = styled.span`
+//   width: fit-content;
+//   position: relative;
+//   cursor: pointer;
 
-  :hover {
-    opacity: 0.8;
-  }
+//   :hover {
+//     opacity: 0.8;
+//   }
 
-  :active {
-    opacity: 0.9;
-  }
-`
+//   :active {
+//     opacity: 0.9;
+//   }
+// `
 
 const HideSmall = styled.span`
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -269,6 +269,17 @@ export const StyledMenuButton = styled.button`
   }
 `
 
+export const BackLink = styled.a`
+  transition: color 0.15s linear;
+  text-decoration: none;
+  color: ${({ theme }) => theme.text1};
+  white-space: nowrap;
+  font-weight: 500;
+  &:hover {
+    color: ${({ theme }) => theme.primary1};
+  }
+`
+
 const NETWORK_LABELS: { [chainId in SupportedChainId | number]: string } = {
   // [SupportedChainId.MAINNET]: 'Mainnet',
   // [SupportedChainId.RINKEBY]: 'Rinkeby',
@@ -287,14 +298,14 @@ export default function Header() {
   // const [isDark] = useDarkModeManager()
   const [darkMode, toggleDarkMode] = useDarkModeManager()
 
-  const toggleClaimModal = useToggleSelfClaimModal()
+  // const toggleClaimModal = useToggleSelfClaimModal()
 
-  const availableClaim: boolean = useUserHasAvailableClaim(account)
+  // const availableClaim: boolean = useUserHasAvailableClaim(account)
 
-  const { claimTxn } = useUserHasSubmittedClaim(account ?? undefined)
+  // const { claimTxn } = useUserHasSubmittedClaim(account ?? undefined)
 
   const [showUniBalanceModal, setShowUniBalanceModal] = useState(false)
-  const showClaimPopup = useShowClaimPopup()
+  // const showClaimPopup = useShowClaimPopup()
 
   const scrollY = useScrollPosition()
 
@@ -310,6 +321,7 @@ export default function Header() {
             <img width={'44px'} src={Logo} alt="logo" />
           </UniIcon>
         </Title>
+        <BackLink href="https://www.rara.farm/">Go back to rara.farm</BackLink>
       </HeaderRow>
       <HeaderLinks>
         <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
@@ -343,7 +355,7 @@ export default function Header() {
               <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
             )}
           </HideSmall>
-          {availableClaim && !showClaimPopup && (
+          {/* {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
@@ -358,7 +370,7 @@ export default function Header() {
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>
-          )}
+          )} */}
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
