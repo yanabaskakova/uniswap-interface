@@ -207,7 +207,7 @@ msgid "Allow high price impact trades and skip the confirm screen. Use at your o
 msgstr "允许高兑换率影响的交易，并跳过确认步骤。须自行承担使用风险。"
 
 #: src/pages/Swap/index.tsx
-msgid "Allow the Uniswap Protocol to use your {0}"
+msgid "Allow the RARA Protocol to use your {0}"
 msgstr "允许Uniswap协议使用您的{0}"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
@@ -223,7 +223,7 @@ msgid "Amount"
 msgstr "数额"
 
 #: src/hooks/useSwapCallback.ts
-msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
+msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with RARA V3."
 msgstr "尝试执行此兑换时发生错误。您可能需要增加滑点容忍度。如果还是不行，则可能是您正在交易的代币不兼容。注：转账时扣除费用的代币和重定基准代币都与Uniswap V3不兼容。"
 
 #: src/components/Menu/index.tsx
@@ -263,7 +263,7 @@ msgid "Are you sure?"
 msgstr "您确定吗？"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
+msgid "As a member of the RARA community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
 msgstr "作为Uniswap社区的成员，您可以领取UNI代币，用于投票和治理。<0/><1/><2>阅读更多关于UNI的信息</2>"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
@@ -315,7 +315,7 @@ msgid "By adding this list you are implicitly trusting that the data is correct.
 msgstr "添加此代币列表代表您信任其数据是正确的。任何人都可以创建代币列表，包括创建假冒实际列表的造假版本，以及自我声称代表了某项目的代币列表。"
 
 #: src/components/WalletModal/index.tsx
-msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>Uniswap protocol disclaimer</1>."
+msgid "By connecting a wallet, you agree to RARA Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>RARA protocol disclaimer</1>."
 msgstr "通过连接钱包，您同意接受Uniswap实验室的<0>服务条款</0>，并确认您已阅读和理解<1>Uniswap协议免责声明</1>。"
 
 #: src/components/AccountDetails/index.tsx
@@ -581,7 +581,7 @@ msgid "Deposit liquidity"
 msgstr "存入流动资金"
 
 #: src/pages/Earn/index.tsx
-msgid "Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token."
+msgid "Deposit your Liquidity Provider tokens to receive UNI, the RARA protocol governance token."
 msgstr "存入您的流动池代币以领取UNI（Uniswap协议治理代币）。"
 
 #: src/components/earn/UnstakingModal.tsx
@@ -633,7 +633,7 @@ msgid "Don’t see one of your v2 positions? <0>Import it.</0>"
 msgstr "看不到您的一些v2流动资金吗？<0>将它手动导入。</0>"
 
 #: src/components/vote/DelegateModal.tsx
-msgid "Earned UNI tokens represent voting shares in Uniswap governance."
+msgid "Earned UNI tokens represent voting shares in RARA governance."
 msgstr "已赚取的UNI代币代表了Uniswap治理中的投票份额。"
 
 #: src/state/burn/v3/hooks.ts
@@ -698,7 +698,7 @@ msgid "Expert mode turns off the confirm transaction prompt and allows high slip
 msgstr "“专家模式”将关闭确认交易的提示，并允许兑换率高滑点的交易，从而可能导致不利的兑换率和资金损失。"
 
 #: src/pages/Pool/CTACards.tsx
-msgid "Explore popular pools on Uniswap Analytics."
+msgid "Explore popular pools on RARA Analytics."
 msgstr "在Uniswap分析中探索热门的流动池。"
 
 #: src/components/PositionPreview/index.tsx
@@ -710,7 +710,7 @@ msgid "For"
 msgstr "赞成"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
+msgid "For each pool shown below, click migrate to remove your liquidity from RARA V2 and deposit it into RARA V3."
 msgstr "对于下面显示的每个流动池，单击“迁移”以从Uniswap V2赎回您的流动资金，并将其存入到Uniswap V3。"
 
 #: src/components/swap/SwapModalHeader.tsx
@@ -943,7 +943,7 @@ msgid "Migrate V2 liquidity"
 msgstr "迁移V2流动资金"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "Migrate your liquidity tokens from Uniswap V2 to Uniswap V3."
+msgid "Migrate your liquidity tokens from RARA V2 to RARA V3."
 msgstr "将您的流动资金从Uniswap V2迁移到Uniswap V3。"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
@@ -1157,7 +1157,7 @@ msgid "Read more about UNI"
 msgstr "阅读更多关于UNI的信息"
 
 #: src/pages/Vote/index.tsx
-msgid "Read more about Uniswap governance"
+msgid "Read more about RARA governance"
 msgstr "阅读有关Uniswap治理的更多信息"
 
 #: src/pages/Pool/v2.tsx
@@ -1335,11 +1335,11 @@ msgid "Swapping {0} {1} for {2} {3}"
 msgstr "将{0} {1}兑换为{2} {3}"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "Thanks for being part of the Uniswap community <0/>"
+msgid "Thanks for being part of the RARA community <0/>"
 msgstr "感谢您加入Uniswap社区 <0/>"
 
 #: src/hooks/useSwapCallback.ts
-msgid "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
+msgid "The RARA invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
 msgstr "兑换交易不满足Uniswap不变量x*y=k的要求。这通常意味着您要兑换的代币之一在代币转账过程中带有一些自定义代币合约特性。"
 
 #: src/hooks/useSwapCallback.ts
@@ -1355,8 +1355,8 @@ msgid "The output token cannot be transferred. There may be an issue with the ou
 msgstr "产出无法进行转账。产出代币可能遇到问题。"
 
 #: src/hooks/useSwapCallback.ts
-msgid "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "无法传输输出令牌。输出令牌可能有问题。注意：转账和 rebase 代币的费用与 Uniswap V3 不兼容。"
+msgid "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "无法传输输出令牌。输出令牌可能有问题。注意：转账和 rebase 代币的费用与 RARA V3 不兼容。"
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "The price of this pool is outside of your selected range. Your position is not currently earning fees."
@@ -1387,8 +1387,8 @@ msgid "This tool will safely migrate your {0} liquidity to V3. The process is co
 msgstr "该工具将安全地将您的{0}流动资金迁移到V3。该过程完全去信任，得益于"
 
 #: src/hooks/useSwapCallback.ts
-msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "由于价格变动，此交易不会成功。尝试增加您的滑点容忍度。注意：转账和 rebase 代币的费用与 Uniswap V3 不兼容。"
+msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "由于价格变动，此交易不会成功。尝试增加您的滑点容忍度。注意：转账和 rebase 代币的费用与 RARA V3 不兼容。"
 
 #: src/hooks/useSwapCallback.ts
 msgid "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
@@ -1473,7 +1473,7 @@ msgid "UNI price:"
 msgstr "UNI兑换率："
 
 #: src/pages/Vote/index.tsx
-msgid "UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
+msgid "UNI tokens represent voting shares in RARA governance. You can vote on each proposal yourself or delegate your votes to a third party."
 msgstr "UNI代币代表了Uniswap治理中的投票份额。您可以自行为提案进行投票，或将您的投票权委托给第三方。"
 
 #: src/pages/RemoveLiquidity/index.tsx
@@ -1502,23 +1502,23 @@ msgid "Unclaimed:"
 msgstr "未领取："
 
 #: src/pages/Vote/index.tsx
-msgid "Uniswap Governance"
+msgid "RARA Governance"
 msgstr "Uniswap治理"
 
 #: src/pages/Pool/CTACards.tsx
-msgid "Uniswap V3 is here!"
-msgstr "Uniswap V3已发布！"
+msgid "RARA V3 is here!"
+msgstr "RARA V3已发布！"
 
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "Uniswap available in: <0>{0}</0>"
+msgid "RARA available in: <0>{0}</0>"
 msgstr "Uniswap可用：<0>{0}</0>"
 
 #: src/pages/Earn/index.tsx
-msgid "Uniswap liquidity mining"
+msgid "RARA liquidity mining"
 msgstr "Uniswap流动资金挖矿"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "Uniswap migration contract↗"
+msgid "RARA migration contract↗"
 msgstr "Uniswap迁移合约↗"
 
 #: src/components/SearchModal/ImportToken.tsx
@@ -1526,8 +1526,8 @@ msgid "Unknown Source"
 msgstr "未知来源"
 
 #: src/hooks/useSwapCallback.ts
-msgid "Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "未知错误{0}。尝试增加您的滑点容忍度。注意：转账和 rebase 代币的费用与 Uniswap V3 不兼容。"
+msgid "Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "未知错误{0}。尝试增加您的滑点容忍度。注意：转账和 rebase 代币的费用与 RARA V3 不兼容。"
 
 #: src/pages/Vote/VotePage.tsx
 #: src/pages/Vote/index.tsx
@@ -1700,7 +1700,7 @@ msgid "You are creating a pool"
 msgstr "您正在创建一个流动池"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the current {0} price."
+msgid "You are the first liquidity provider for this RARA V3 pool. Your liquidity will migrate at the current {0} price."
 msgstr "您是此Uniswap V3流动池的第一个流动资金提供者。您的流动资金将以当前的{0}兑换率迁移。"
 
 #: src/pages/AddLiquidityV2/index.tsx
@@ -1724,11 +1724,11 @@ msgid "You must connect an account."
 msgstr "您必须连接帐户。"
 
 #: src/pages/Swap/index.tsx
-msgid "You must give the Uniswap smart contracts permission to use your {0}. You only have to do this once per token."
+msgid "You must give the RARA smart contracts permission to use your {0}. You only have to do this once per token."
 msgstr "您必须授予Uniswap智能合约使用您的{0}的权限。每个代币只需要授权一次。"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so."
+msgid "You should only deposit liquidity into RARA V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so."
 msgstr "请确保以您认为是正确的兑换率来将流动资金存入到Uniswap V3。<0/>如果兑换率看起来不正确，您可以进行兑换交易以移动兑换率，或者等待别人这样做。"
 
 #: src/pages/RemoveLiquidity/V3.tsx

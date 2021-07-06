@@ -207,8 +207,8 @@ msgid "Allow high price impact trades and skip the confirm screen. Use at your o
 msgstr "Permitir negociações de preço de alto impacto e ignorar a tela de confirmação. Use por sua conta e risco."
 
 #: src/pages/Swap/index.tsx
-msgid "Allow the Uniswap Protocol to use your {0}"
-msgstr "Permitir que o Protocolo Uniswap utilize seu {0}"
+msgid "Allow the RARA Protocol to use your {0}"
+msgstr "Permitir que o Protocolo RARA utilize seu {0}"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Allowed"
@@ -223,8 +223,8 @@ msgid "Amount"
 msgstr "Valor"
 
 #: src/hooks/useSwapCallback.ts
-msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Ocorreu um erro ao tentar executar esta conversão. Pode ser preciso aumentar sua tolerância às discrepâncias. Se não der certo, pode haver incompatibilidade com o token que você está negociando. Observe que a taxa sobre transferências e os tokens de reembasamento são incompatíveis com o Uniswap V3."
+msgid "An error occurred when trying to execute this swap. You may need to increase your slippage tolerance. If that does not work, there may be an incompatibility with the token you are trading. Note fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "Ocorreu um erro ao tentar executar esta conversão. Pode ser preciso aumentar sua tolerância às discrepâncias. Se não der certo, pode haver incompatibilidade com o token que você está negociando. Observe que a taxa sobre transferências e os tokens de reembasamento são incompatíveis com o RARA V3."
 
 #: src/components/Menu/index.tsx
 msgid "Analytics"
@@ -263,8 +263,8 @@ msgid "Are you sure?"
 msgstr "Tem certeza?"
 
 #: src/components/claim/ClaimModal.tsx
-msgid "As a member of the Uniswap community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
-msgstr "Como membro da comunidade Uniswap, você pode resgatar UNI a serem utilizados para votação e governança.<0/><1/><2>Leia mais sobre as UNI</2>"
+msgid "As a member of the RARA community you may claim UNI to be used for voting and governance.<0/><1/><2>Read more about UNI</2>"
+msgstr "Como membro da comunidade RARA, você pode resgatar UNI a serem utilizados para votação e governança.<0/><1/><2>Leia mais sobre as UNI</2>"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "At least {0} {1} and {2} {3} will be refunded to your wallet due to selected price range."
@@ -315,8 +315,8 @@ msgid "By adding this list you are implicitly trusting that the data is correct.
 msgstr "Ao acrescentar esta lista, você está implicitamente confirmando que considera os dados corretos. Qualquer pessoa pode criar uma lista, incluindo versões falsas de listas existente e listas que alegam representar projetos que não existem."
 
 #: src/components/WalletModal/index.tsx
-msgid "By connecting a wallet, you agree to Uniswap Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>Uniswap protocol disclaimer</1>."
-msgstr "Ao se conectar a uma carteira, você concorda com os <0>Termos de Serviço</0> do Uniswap Laboratório e declara ter lido e compreendido o <1>Termo de Isenção de Responsabilidade do Protocolo Unisawp</1>."
+msgid "By connecting a wallet, you agree to RARA Labs’ <0>Terms of Service</0> and acknowledge that you have read and understand the <1>RARA protocol disclaimer</1>."
+msgstr "Ao se conectar a uma carteira, você concorda com os <0>Termos de Serviço</0> do RARA Laboratório e declara ter lido e compreendido o <1>Termo de Isenção de Responsabilidade do Protocolo Unisawp</1>."
 
 #: src/components/AccountDetails/index.tsx
 msgid "Change"
@@ -581,8 +581,8 @@ msgid "Deposit liquidity"
 msgstr "Liquidez do depósito"
 
 #: src/pages/Earn/index.tsx
-msgid "Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token."
-msgstr "Deposite sua tokens de Fornecedores com Liquidez para receber UNI, o token de governança do Protocolo Uniswap."
+msgid "Deposit your Liquidity Provider tokens to receive UNI, the RARA protocol governance token."
+msgstr "Deposite sua tokens de Fornecedores com Liquidez para receber UNI, o token de governança do Protocolo RARA."
 
 #: src/components/earn/UnstakingModal.tsx
 msgid "Deposited liquidity:"
@@ -633,8 +633,8 @@ msgid "Don’t see one of your v2 positions? <0>Import it.</0>"
 msgstr "Não está vendo uma de suas posições V2? <0>Importe-a.</0>"
 
 #: src/components/vote/DelegateModal.tsx
-msgid "Earned UNI tokens represent voting shares in Uniswap governance."
-msgstr "Os tokens UNI recebidos representam capital votante na governança do Uniswap."
+msgid "Earned UNI tokens represent voting shares in RARA governance."
+msgstr "Os tokens UNI recebidos representam capital votante na governança do RARA."
 
 #: src/state/burn/v3/hooks.ts
 msgid "Enter a percent"
@@ -698,8 +698,8 @@ msgid "Expert mode turns off the confirm transaction prompt and allows high slip
 msgstr "O modo Expert desativa o prompt de confirmação da operação e permite negociações com altas taxas de discrepância, que muitas vezes resultam em taxas ruins e perda de fundos."
 
 #: src/pages/Pool/CTACards.tsx
-msgid "Explore popular pools on Uniswap Analytics."
-msgstr "Explore lotes populares no Uniswap Analytics."
+msgid "Explore popular pools on RARA Analytics."
+msgstr "Explore lotes populares no RARA Analytics."
 
 #: src/components/PositionPreview/index.tsx
 msgid "Fee Tier"
@@ -710,8 +710,8 @@ msgid "For"
 msgstr "Para"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "For each pool shown below, click migrate to remove your liquidity from Uniswap V2 and deposit it into Uniswap V3."
-msgstr "Para cada lote exibido abaixo, clique em migrar para remover sua liquidez do Uniswap V2 e depositá-la it no Uniswap V3."
+msgid "For each pool shown below, click migrate to remove your liquidity from RARA V2 and deposit it into RARA V3."
+msgstr "Para cada lote exibido abaixo, clique em migrar para remover sua liquidez do RARA V2 e depositá-la it no RARA V3."
 
 #: src/components/swap/SwapModalHeader.tsx
 #: src/pages/Swap/index.tsx
@@ -943,8 +943,8 @@ msgid "Migrate V2 liquidity"
 msgstr "Migrar liquidez V2"
 
 #: src/pages/MigrateV2/index.tsx
-msgid "Migrate your liquidity tokens from Uniswap V2 to Uniswap V3."
-msgstr "Migrar seus tokens de liquidez do Uniswap V2 para o Uniswap V3."
+msgid "Migrate your liquidity tokens from RARA V2 to RARA V3."
+msgstr "Migrar seus tokens de liquidez do RARA V2 para o RARA V3."
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
 msgid "Migrating"
@@ -1157,8 +1157,8 @@ msgid "Read more about UNI"
 msgstr "Leia mais sobre as UNI"
 
 #: src/pages/Vote/index.tsx
-msgid "Read more about Uniswap governance"
-msgstr "Ler mais sobre governança no Uniswap"
+msgid "Read more about RARA governance"
+msgstr "Ler mais sobre governança no RARA"
 
 #: src/pages/Pool/v2.tsx
 msgid "Read more about providing liquidity"
@@ -1335,12 +1335,12 @@ msgid "Swapping {0} {1} for {2} {3}"
 msgstr "Convertendo {0} {1} para {2} {3}"
 
 #: src/components/Popups/ClaimPopup.tsx
-msgid "Thanks for being part of the Uniswap community <0/>"
-msgstr "Obrigado por fazer parte da comunidade Uniswap <0/>"
+msgid "Thanks for being part of the RARA community <0/>"
+msgstr "Obrigado por fazer parte da comunidade RARA <0/>"
 
 #: src/hooks/useSwapCallback.ts
-msgid "The Uniswap invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
-msgstr "A invariante x*y=k do Uniswap não foi observada na conversão. Isto geralmente significa que um dos tokens que você está convertendo tem um comportamento de transferência personalizado."
+msgid "The RARA invariant x*y=k was not satisfied by the swap. This usually means one of the tokens you are swapping incorporates custom behavior on transfer."
+msgstr "A invariante x*y=k do RARA não foi observada na conversão. Isto geralmente significa que um dos tokens que você está convertendo tem um comportamento de transferência personalizado."
 
 #: src/hooks/useSwapCallback.ts
 msgid "The input token cannot be transferred. There may be an issue with the input token."
@@ -1355,8 +1355,8 @@ msgid "The output token cannot be transferred. There may be an issue with the ou
 msgstr "O token resultante não pode ser transferido. Pode haver um problema com o token resultante."
 
 #: src/hooks/useSwapCallback.ts
-msgid "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "O token de saída não pode ser transferido. Pode haver um problema com o token de saída. Nota: a taxa de transferência e tokens de rebase são incompatíveis com Uniswap V3."
+msgid "The output token cannot be transferred. There may be an issue with the output token. Note: fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "O token de saída não pode ser transferido. Pode haver um problema com o token de saída. Nota: a taxa de transferência e tokens de rebase são incompatíveis com RARA V3."
 
 #: src/components/Badge/RangeBadge.tsx
 msgid "The price of this pool is outside of your selected range. Your position is not currently earning fees."
@@ -1387,8 +1387,8 @@ msgid "This tool will safely migrate your {0} liquidity to V3. The process is co
 msgstr "Esta ferramenta fará a migração da sua liquidez {0} em segurança para V3. O processo não é inteiramente confiável, devido ao"
 
 #: src/hooks/useSwapCallback.ts
-msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Esta transação não terá sucesso devido ao movimento do preço. Tente aumentar sua tolerância ao deslizamento. Nota: a taxa de transferência e tokens de rebase são incompatíveis com Uniswap V3."
+msgid "This transaction will not succeed due to price movement. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "Esta transação não terá sucesso devido ao movimento do preço. Tente aumentar sua tolerância ao deslizamento. Nota: a taxa de transferência e tokens de rebase são incompatíveis com RARA V3."
 
 #: src/hooks/useSwapCallback.ts
 msgid "This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance."
@@ -1473,8 +1473,8 @@ msgid "UNI price:"
 msgstr "Preço da UNI:"
 
 #: src/pages/Vote/index.tsx
-msgid "UNI tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or delegate your votes to a third party."
-msgstr "Os tokens de UNI representam capital votante na governança do Uniswap. Você mesmo pode votar em cada proposta ou pode delegar seu voto a terceiros."
+msgid "UNI tokens represent voting shares in RARA governance. You can vote on each proposal yourself or delegate your votes to a third party."
+msgstr "Os tokens de UNI representam capital votante na governança do RARA. Você mesmo pode votar em cada proposta ou pode delegar seu voto a terceiros."
 
 #: src/pages/RemoveLiquidity/index.tsx
 msgid "UNI {0}/{1} Burned"
@@ -1502,23 +1502,23 @@ msgid "Unclaimed:"
 msgstr "Não resgatadas:"
 
 #: src/pages/Vote/index.tsx
-msgid "Uniswap Governance"
-msgstr "Governança do Uniswap"
+msgid "RARA Governance"
+msgstr "Governança do RARA"
 
 #: src/pages/Pool/CTACards.tsx
-msgid "Uniswap V3 is here!"
-msgstr "Chegou o Uniswap V3!"
+msgid "RARA V3 is here!"
+msgstr "Chegou o RARA V3!"
 
 #: src/components/SwitchLocaleLink/index.tsx
-msgid "Uniswap available in: <0>{0}</0>"
-msgstr "Uniswap disponível em: <0>{0}</0>"
+msgid "RARA available in: <0>{0}</0>"
+msgstr "RARA disponível em: <0>{0}</0>"
 
 #: src/pages/Earn/index.tsx
-msgid "Uniswap liquidity mining"
-msgstr "Mineração de liquidez no Uniswap"
+msgid "RARA liquidity mining"
+msgstr "Mineração de liquidez no RARA"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "Uniswap migration contract↗"
+msgid "RARA migration contract↗"
 msgstr "Contrato de migração no Uniswap↗"
 
 #: src/components/SearchModal/ImportToken.tsx
@@ -1526,8 +1526,8 @@ msgid "Unknown Source"
 msgstr "Fonte desconhecida"
 
 #: src/hooks/useSwapCallback.ts
-msgid "Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with Uniswap V3."
-msgstr "Erro desconhecido{0}. Tente aumentar sua tolerância ao deslizamento. Nota: a taxa de transferência e tokens de rebase são incompatíveis com Uniswap V3."
+msgid "Unknown error{0}. Try increasing your slippage tolerance. Note: fee on transfer and rebase tokens are incompatible with RARA V3."
+msgstr "Erro desconhecido{0}. Tente aumentar sua tolerância ao deslizamento. Nota: a taxa de transferência e tokens de rebase são incompatíveis com RARA V3."
 
 #: src/pages/Vote/VotePage.tsx
 #: src/pages/Vote/index.tsx
@@ -1700,8 +1700,8 @@ msgid "You are creating a pool"
 msgstr "Você está abrindo um novo lote"
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "You are the first liquidity provider for this Uniswap V3 pool. Your liquidity will migrate at the current {0} price."
-msgstr "Você é o primeiro fornecedor com liquidez neste lote do Uniswap V3. Sua liquidez será migrada ao preço atual de {0}."
+msgid "You are the first liquidity provider for this RARA V3 pool. Your liquidity will migrate at the current {0} price."
+msgstr "Você é o primeiro fornecedor com liquidez neste lote do RARA V3. Sua liquidez será migrada ao preço atual de {0}."
 
 #: src/pages/AddLiquidityV2/index.tsx
 msgid "You are the first liquidity provider."
@@ -1724,12 +1724,12 @@ msgid "You must connect an account."
 msgstr "É preciso conectar-se a uma conta."
 
 #: src/pages/Swap/index.tsx
-msgid "You must give the Uniswap smart contracts permission to use your {0}. You only have to do this once per token."
-msgstr "É preciso conceder a permissão ao recurso de contratos inteligentes do Uniswap para que possa utilizar seu {0}. Basta efetuar a operação uma vez para cada token."
+msgid "You must give the RARA smart contracts permission to use your {0}. You only have to do this once per token."
+msgstr "É preciso conceder a permissão ao recurso de contratos inteligentes do RARA para que possa utilizar seu {0}. Basta efetuar a operação uma vez para cada token."
 
 #: src/pages/MigrateV2/MigrateV2Pair.tsx
-msgid "You should only deposit liquidity into Uniswap V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so."
-msgstr "A liquidez deve ser depositada apenas no Uniswap V3 ao preço que você julgar correto. <0/>Se o preço parecer incorreto, você pode fazer uma conversão para alterar o preço ou aguardar até que outra pessoa o faça."
+msgid "You should only deposit liquidity into RARA V3 at a price you believe is correct. <0/>If the price seems incorrect, you can either make a swap to move the price or wait for someone else to do so."
+msgstr "A liquidez deve ser depositada apenas no RARA V3 ao preço que você julgar correto. <0/>Se o preço parecer incorreto, você pode fazer uma conversão para alterar o preço ou aguardar até que outra pessoa o faça."
 
 #: src/pages/RemoveLiquidity/V3.tsx
 msgid "You will also collect fees earned from this position."
