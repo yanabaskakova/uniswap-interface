@@ -11,6 +11,13 @@ export const WETH = {
   //   'WBNB',
   //   'Wrapped BNB'
   // ),
+  [SupportedChainId.BSC_MAINNET]: new Token(
+    SupportedChainId.BSC_MAINNET,
+    '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', //0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd
+    18,
+    'WBNB',
+    'Wrapped BNB'
+  ),
   [SupportedChainId.BSC_TESTNET]: new Token(
     SupportedChainId.BSC_TESTNET,
     '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd', //0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd
@@ -49,7 +56,7 @@ const mAssetsAdditionalBases: { [tokenAddress: string]: Token[] } = {
   // '0xf72FCd9DCF0190923Fadd44811E240Ef4533fc86': [MIR, UST], // mVIXY
 }
 const WETH_ONLY: ChainTokenList = {
-  // [SupportedChainId.MAINNET]: [WETH[SupportedChainId.MAINNET]],
+  [SupportedChainId.BSC_MAINNET]: [WETH[SupportedChainId.BSC_MAINNET]],
   [SupportedChainId.BSC_TESTNET]: [WETH[SupportedChainId.BSC_TESTNET]],
 }
 // used to construct intermediary pairs for trading
@@ -98,6 +105,10 @@ export const COMMON_BASES: ChainCurrencyList = {
   //   ExtendedEther.onChain(SupportedChainId.ARBITRUM_ONE),
   //   WETH9_EXTENDED[SupportedChainId.ARBITRUM_ONE],
   // ],
+  [SupportedChainId.BSC_MAINNET]: [
+    ExtendedEther.onChain(SupportedChainId.BSC_MAINNET),
+    WETH9_EXTENDED[SupportedChainId.BSC_MAINNET],
+  ],
   [SupportedChainId.BSC_TESTNET]: [
     ExtendedEther.onChain(SupportedChainId.BSC_TESTNET),
     WETH9_EXTENDED[SupportedChainId.BSC_TESTNET],

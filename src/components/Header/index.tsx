@@ -286,6 +286,7 @@ const NETWORK_LABELS: { [chainId in SupportedChainId | number]: string } = {
   // [SupportedChainId.ROPSTEN]: 'Ropsten',
   // [SupportedChainId.GOERLI]: 'Görli',
   // [SupportedChainId.KOVAN]: 'Kovan',
+  [SupportedChainId.BSC_MAINNET]: 'BSC Mainnet',
   [SupportedChainId.BSC_TESTNET]: 'BSC Testnet',
   // [SupportedChainId.ARBITRUM_KOVAN]: 'kArbitrum',
   // [SupportedChainId.ARBITRUM_ONE]: 'Arbitrum One',

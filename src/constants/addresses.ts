@@ -12,10 +12,16 @@ export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5
 // [ChainId.BSCTESTNET]: '0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A'
 export const MULTICALL2_ADDRESSES: AddressMap = {
   // ...constructSameAddressMap('0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A'),
+  [SupportedChainId.BSC_MAINNET]: '0x1Ee38d535d541c55C9dae27B12edf090C608E6Fb',
   [SupportedChainId.BSC_TESTNET]: '0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A',
 }
+
 export const V2_FACTORY_ADDRESSES: AddressMap = constructSameAddressMap('0x9b3fEF64b1Aa1144B04f46F8119F2C51c8fD0D1F')
-export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x35c3aAdBcF4166e58316BA1348b675B2794F8260')
+export const V2_ROUTER_ADDRESS: AddressMap = {
+  [SupportedChainId.BSC_MAINNET]: '0x558B92017a3625A2C5f9E131E97123941356fE2f',
+  [SupportedChainId.BSC_TESTNET]: '0x35c3aAdBcF4166e58316BA1348b675B2794F8260',
+}
+// export const V2_ROUTER_ADDRESS: AddressMap = constructSameAddressMap('0x558B92017a3625A2C5f9E131E97123941356fE2f')
 export const GOVERNANCE_ADDRESSES: AddressMap[] = [
   constructSameAddressMap('0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'),
   {

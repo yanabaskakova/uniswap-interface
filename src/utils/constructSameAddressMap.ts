@@ -14,7 +14,7 @@ export function constructSameAddressMap<T extends string>(
   //     [SupportedChainId.ARBITRUM_ONE]: address,
   //   }
   return {
-    // [SupportedChainId.MAINNET]: address,
+    [SupportedChainId.BSC_MAINNET]: address,
     [SupportedChainId.BSC_TESTNET]: address,
   }
 }

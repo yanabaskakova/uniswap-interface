@@ -14,14 +14,16 @@ import UNISWAP_LOGO_URL from '../assets/svg/logo.svg'
 const NETWORK_URLS: {
   [chainId in SupportedChainId]: string
 } = {
+  [SupportedChainId.BSC_MAINNET]: 'https://bsc-dataseed1.binance.org',
   [SupportedChainId.BSC_TESTNET]: `https://data-seed-prebsc-1-s1.binance.org:8545`,
 }
 
-const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [SupportedChainId.BSC_TESTNET]
+const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [SupportedChainId.BSC_MAINNET, SupportedChainId.BSC_TESTNET]
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,
-  defaultChainId: 97,
+  defaultChainId: 56,
+  // defaultChainId: 97,
 })
 
 let networkLibrary: Web3Provider | undefined
@@ -53,7 +55,8 @@ export const walletconnect = new WalletConnectConnector({
 
 // mainnet only
 export const walletlink = new WalletLinkConnector({
-  url: NETWORK_URLS[97],
+  url: NETWORK_URLS[56],
+  // url: NETWORK_URLS[97],
   appName: 'Uniswap',
   appLogoUrl: UNISWAP_LOGO_URL,
 })

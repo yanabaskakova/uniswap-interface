@@ -48,6 +48,14 @@ export const VIDYX = new Token(
 // }
 export const WETH9_EXTENDED: { [chainId: number]: Token } = {
   ...WETH9,
+  [SupportedChainId.BSC_MAINNET]: new Token(
+    SupportedChainId.BSC_MAINNET,
+    '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c',
+    // '0x848289141674B5ffFAdf87902144B3e72AB52560',
+    18,
+    'WBNB',
+    'Wrapperd Binance Coin'
+  ),
   [SupportedChainId.BSC_TESTNET]: new Token(
     SupportedChainId.BSC_TESTNET,
     '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
