@@ -29,6 +29,7 @@ import { RedirectDuplicateTokenIdsV2 } from './AddLiquidityV2/redirects'
 import { PositionPage } from './Pool/PositionPage'
 import AddLiquidity from './AddLiquidity'
 import ApeModeQueryParamReader from 'hooks/useApeModeQueryParamReader'
+import Navbar from 'components/Navbar'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -56,7 +57,7 @@ const HeaderWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   position: fixed;
-  top: 0;
+  top: 80px;
   z-index: 2;
 `
 
@@ -77,6 +78,7 @@ export default function App() {
       <Route component={DarkModeQueryParamReader} />
       <Route component={ApeModeQueryParamReader} />
       <AppWrapper>
+        <Navbar />
         <HeaderWrapper>
           <Header />
         </HeaderWrapper>

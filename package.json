@@ -29,6 +29,7 @@
     "@types/react-dom": "^17.0.1",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.0.0",
+    "@types/react-transition-group": "^4.4.1",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.2",
     "@types/rebass": "^4.0.7",
@@ -42,10 +43,10 @@
     "@uniswap/governance": "^1.0.2",
     "@uniswap/liquidity-staker": "^1.0.2",
     "@uniswap/merkle-distributor": "1.0.1",
+    "@uniswap/sdk-core": "git+https://github.com/yanabaskakova/uniswap-sdk-core.git",
     "@uniswap/token-lists": "^1.0.0-beta.19",
     "@uniswap/v2-core": "1.0.0",
     "@uniswap/v2-periphery": "^1.1.0-beta.0",
-    "@uniswap/sdk-core": "git+https://github.com/yanabaskakova/uniswap-sdk-core.git",
     "@uniswap/v2-sdk": "git+https://github.com/yanabaskakova/uniswap-v2-sdk.git",
     "@uniswap/v3-core": "1.0.0",
     "@uniswap/v3-periphery": "1.0.0",
@@ -144,6 +145,9 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@binance-chain/bsc-connector": "^1.0.0"
+    "@binance-chain/bsc-connector": "^1.0.0",
+    "hamburgers": "^1.1.3",
+    "react-transition-group": "^4.4.2",
+    "react-use": "^17.2.4"
   }
 }
