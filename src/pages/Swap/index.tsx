@@ -5,12 +5,16 @@ import { Trade as V3Trade } from '@uniswap/v3-sdk'
 import { AdvancedSwapDetails } from 'components/swap/AdvancedSwapDetails'
 import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter'
 import { MouseoverTooltip, MouseoverTooltipContent } from 'components/Tooltip'
+import { V2_ROUTER_ADDRESS } from 'constants/addresses'
+import { BigNumber } from 'ethers'
+import { useTokenContract } from 'hooks/useContract'
 import JSBI from 'jsbi'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown, CheckCircle, HelpCircle, Info } from 'react-feather'
 import ReactGA from 'react-ga'
 import { RouteComponentProps } from 'react-router-dom'
 import { Text } from 'rebass'
+import { useHasPendingApproval } from 'state/transactions/hooks'
 import styled, { ThemeContext } from 'styled-components'
 import AddressInputPanel from '../../components/AddressInputPanel'
 import { ButtonConfirmed, ButtonError, ButtonLight, ButtonPrimary } from '../../components/Button'
@@ -20,7 +24,6 @@ import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import CurrencyLogo from '../../components/CurrencyLogo'
 import Loader from '../../components/Loader'
 import Row, { AutoRow, RowFixed } from '../../components/Row'
-// import BetterTradeLink from '../../components/swap/BetterTradeLink'
 import confirmPriceImpactWithoutFee from '../../components/swap/confirmPriceImpactWithoutFee'
 import ConfirmSwapModal from '../../components/swap/ConfirmSwapModal'
 
@@ -31,7 +34,6 @@ import { SwitchLocaleLink } from '../../components/SwitchLocaleLink'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import { useAllTokens, useCurrency } from '../../hooks/Tokens'
 import { ApprovalState, useApproveCallbackFromTrade } from '../../hooks/useApproveCallback'
-// import { V3TradeState } from '../../hooks/useBestV3Trade'
 import useENSAddress from '../../hooks/useENSAddress'
 import { useERC20PermitFromTrade, UseERC20PermitState } from '../../hooks/useERC20Permit'
 import useIsArgentWallet from '../../hooks/useIsArgentWallet'
@@ -93,7 +95,7 @@ export default function Swap({ history }: RouteComponentProps) {
       return !Boolean(token.address in defaultTokens)
     })
 
-  const { account } = useActiveWeb3React()
+  const { account, chainId = 56 } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
 
   // toggle wallet when disconnected
@@ -189,17 +191,6 @@ export default function Swap({ history }: RouteComponentProps) {
       : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   }
 
-  console.log(
-    'formattedAmounts',
-    formattedAmounts,
-    'showWrap',
-    showWrap,
-    'parsedAmounts[independentField]',
-    parsedAmounts[independentField]?.toExact(),
-    ' parsedAmounts[dependentField]',
-    parsedAmounts[dependentField]?.toSignificant(6)
-  )
-
   const userHasSpecifiedInputOutput = Boolean(
     currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0))
   )
@@ -208,8 +199,19 @@ export default function Swap({ history }: RouteComponentProps) {
   const isLoadingRoute = false
   // const isLoadingRoute = toggledVersion === Version.v3 && V3TradeState.LOADING === v3TradeState
 
+  const [allowance, setAllowance] = useState<BigNumber | undefined>()
+
+  const getAllowance = async (contract: any = tokenContract) => {
+    const res = await contract?.allowance(account ?? '', V2_ROUTER_ADDRESS[chainId])
+
+    res && setAllowance(res)
+
+    return res
+  }
+
   // check whether the user has approved the router on the input token
-  const [approvalState, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage)
+  const [approvalState, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage, true)
+
   const {
     state: signatureState,
     signatureData,
@@ -229,6 +231,8 @@ export default function Swap({ history }: RouteComponentProps) {
     } else {
       await approveCallback()
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [approveCallback, gatherPermitSignature, signatureState])
 
   // check if user has gone through approval process, used to show two step buttons, reset on token change
@@ -360,8 +364,15 @@ export default function Swap({ history }: RouteComponentProps) {
   )
 
   const swapIsUnsupported = useIsSwapUnsupported(currencies?.INPUT, currencies?.OUTPUT)
-
   const priceImpactTooHigh = priceImpactSeverity > 3 && !isExpertMode
+  const tokenContract = useTokenContract((currencies[Field.INPUT] as any)?.address)
+
+  const hasTokenPendingApproval = useHasPendingApproval(tokenContract?.address, V2_ROUTER_ADDRESS[chainId])
+
+  useEffect(() => {
+    getAllowance()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tokenContract, hasTokenPendingApproval])
 
   return (
     <>
@@ -498,15 +509,18 @@ export default function Swap({ history }: RouteComponentProps) {
                     )}
                   </TYPE.main>
                 </GreyCard>
-              ) : showApproveFlow ? (
+              ) : showApproveFlow || allowance?.toString() === '0' ? (
                 <AutoRow style={{ flexWrap: 'nowrap', width: '100%' }}>
                   <AutoColumn style={{ width: '100%' }} gap="12px">
                     <ButtonConfirmed
                       onClick={handleApprove}
                       disabled={
-                        approvalState !== ApprovalState.NOT_APPROVED ||
-                        approvalSubmitted ||
-                        signatureState === UseERC20PermitState.SIGNED
+                        ((approvalState !== ApprovalState.NOT_APPROVED ||
+                          approvalSubmitted ||
+                          signatureState === UseERC20PermitState.SIGNED) &&
+                          allowance?.toString() !== '0') ||
+                        hasTokenPendingApproval ||
+                        !parsedAmounts[Field.INPUT]
                       }
                       width="100%"
                       altDisabledStyle={approvalState === ApprovalState.PENDING} // show solid button while waiting

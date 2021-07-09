@@ -21,10 +21,12 @@ export enum ApprovalState {
 // returns a variable indicating the state of the approval and a function which approves if necessary or early returns
 export function useApproveCallback(
   amountToApprove?: CurrencyAmount<Currency>,
-  spender?: string
+  spender?: string,
+  force?: boolean
 ): [ApprovalState, () => Promise<void>] {
   const { account } = useActiveWeb3React()
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
+
   const currentAllowance = useTokenAllowance(token, account ?? undefined, spender)
   const pendingApproval = useHasPendingApproval(token?.address, spender)
 
@@ -47,15 +49,15 @@ export function useApproveCallback(
   const addTransaction = useTransactionAdder()
 
   const approve = useCallback(async (): Promise<void> => {
-    if (approvalState !== ApprovalState.NOT_APPROVED) {
+    if (approvalState !== ApprovalState.NOT_APPROVED && !force) {
       console.error('approve was called unnecessarily')
       return
     }
+
     if (!token) {
       console.error('no token')
       return
     }
-
     if (!tokenContract) {
       console.error('tokenContract is null')
       return
@@ -92,7 +94,7 @@ export function useApproveCallback(
         console.debug('Failed to approve token', error)
         throw error
       })
-  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction])
+  }, [approvalState, token, tokenContract, amountToApprove, spender, addTransaction, force])
 
   return [approvalState, approve]
 }
@@ -100,7 +102,8 @@ export function useApproveCallback(
 // wraps useApproveCallback in the context of a swap
 export function useApproveCallbackFromTrade(
   trade: V2Trade<Currency, Currency, TradeType> | V3Trade<Currency, Currency, TradeType> | undefined,
-  allowedSlippage: Percent
+  allowedSlippage: Percent,
+  force?: boolean
 ) {
   const { chainId } = useActiveWeb3React()
   const v3SwapRouterAddress = chainId ? SWAP_ROUTER_ADDRESSES[chainId] : undefined
@@ -108,6 +111,7 @@ export function useApproveCallbackFromTrade(
     () => (trade && trade.inputAmount.currency.isToken ? trade.maximumAmountIn(allowedSlippage) : undefined),
     [trade, allowedSlippage]
   )
+
   return useApproveCallback(
     amountToApprove,
     chainId
@@ -116,6 +120,7 @@ export function useApproveCallbackFromTrade(
         : trade instanceof V3Trade
         ? v3SwapRouterAddress
         : undefined
-      : undefined
+      : undefined,
+    force
   )
 }
