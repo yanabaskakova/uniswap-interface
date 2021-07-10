@@ -12,6 +12,7 @@ export const UNI_ADDRESS: AddressMap = constructSameAddressMap('0x1f9840a85d5aF5
 // [ChainId.BSCTESTNET]: '0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A'
 export const MULTICALL2_ADDRESSES: AddressMap = {
   // ...constructSameAddressMap('0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A'),
+  // [SupportedChainId.BSC_MAINNET]: '0x41263cba59eb80dc200f3e2544eda4ed6a90e76c',
   [SupportedChainId.BSC_MAINNET]: '0x1Ee38d535d541c55C9dae27B12edf090C608E6Fb',
   [SupportedChainId.BSC_TESTNET]: '0x301907b5835a2d723Fe3e9E8C5Bc5375d5c1236A',
 }
@@ -58,6 +59,7 @@ export const SOCKS_CONTROLLER_ADDRESSES: AddressMap = {
 }
 export const SWAP_ROUTER_ADDRESSES: AddressMap = {
   ...constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564'),
+  // ...constructSameAddressMap('0xE592427A0AEce92De3Edee1F18E0157C05861564'),
   // [SupportedChainId.ARBITRUM_KOVAN]: '0x6ae2DE23F2BE35B3921ba15DA52e4b173667dCb9',
 }
 // export const V3_MIGRATOR_ADDRESSES: AddressMap = constructSameAddressMap('0xA5644E29708357803b5A882D272c41cC0dF92B34')

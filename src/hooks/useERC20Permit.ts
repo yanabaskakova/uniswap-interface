@@ -176,6 +176,7 @@ export function useERC20Permit(
       ('allowed' in signatureData || JSBI.equal(JSBI.BigInt(signatureData.amount), currencyAmount.quotient))
 
     console.log('isSignatureDataValid', isSignatureDataValid)
+
     return {
       state: isSignatureDataValid ? UseERC20PermitState.SIGNED : UseERC20PermitState.NOT_SIGNED,
       signatureData: isSignatureDataValid ? signatureData : null,

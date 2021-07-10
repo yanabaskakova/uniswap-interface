@@ -262,8 +262,6 @@ export default function RemoveLiquidity({
     // } else {
     const methodName = methodNames[0]
 
-    console.log('methodName', methodName)
-    console.log('methodName router', router)
     // const methodName = methodNames[indexOfSuccessfulEstimation]
     const safeGasEstimate = 3000000
     // const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]

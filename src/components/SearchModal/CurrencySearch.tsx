@@ -107,7 +107,6 @@ export function CurrencySearch({
   const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
 
   const ether = useMemo(() => chainId && ExtendedEther.onChain(chainId), [chainId])
-  console.log('ether', ether)
 
   const filteredSortedTokensWithETH: Currency[] = useMemo(() => {
     const s = debouncedQuery.toLowerCase().trim()

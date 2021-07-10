@@ -206,6 +206,10 @@ export function useMultipleContractSingleData(
     [callInputs, contractInterface, fragment]
   )
 
+  // if (methodName === 'getReserves') {
+  //   console.log('fragment', fragment, callData)
+  // }
+
   const calls = useMemo(
     () =>
       fragment && addresses && addresses.length > 0 && callData
@@ -223,8 +227,15 @@ export function useMultipleContractSingleData(
   )
 
   const results = useCallsData(calls, options)
-
   const latestBlockNumber = useBlockNumber()
+  // if (methodName === 'getReserves') {
+  //   console.log(
+  //     'useCallsData results',
+  //     results,
+  //     // calls,
+  //     results.map((result) => toCallState(result, contractInterface, fragment, latestBlockNumber))
+  //   )
+  // }
 
   return useMemo(() => {
     return results.map((result) => toCallState(result, contractInterface, fragment, latestBlockNumber))

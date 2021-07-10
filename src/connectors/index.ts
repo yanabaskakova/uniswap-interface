@@ -22,8 +22,8 @@ const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [SupportedChainId.BSC_MAINNET, S
 
 export const network = new NetworkConnector({
   urls: NETWORK_URLS,
-  defaultChainId: 56,
-  // defaultChainId: 97,
+  // defaultChainId: 56,
+  defaultChainId: 97,
 })
 
 let networkLibrary: Web3Provider | undefined
